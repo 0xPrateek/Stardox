@@ -1,2 +1,2 @@
 # Stardox
-Stargazers information Gathering Tool
+Github Stargazers information Gathering Tool
