@@ -1,0 +1,2 @@
+# Stardox
+Stargazers information Gathering
