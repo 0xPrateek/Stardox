@@ -8,9 +8,9 @@
                 ssss       ssss        sssssssssss      sssssss         sss       ss    ss      ss       ssss
                ssss       ssss        sss     sss      sss  sss        sss       ss    ss      ss       ss  ss
     ssssssssssssss       ssss        sss     sss      sss   sss       sss     ss     ssssssssss        ss   ss
-  sssssssssssssss       ssss        sss     sss      sss     sss     sssssssss      ssssssssss       sss    sss        Made By : Pr0t0n
+  sssssssssssssss       ssss        sss     sss      sss     sss     sssssssss      ssssssssss       sss    sss 
 
 
 Github stargazers information gathering tool
 
-# Project Files will be uploaded soon....
+# Readme will be updated soon
