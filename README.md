@@ -1,4 +1,16 @@
 # Stardox
+           ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+          sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+         sssssss            ssssssssss      ss     ss       sss     ss      sss    ss       ss      ss   sss    sss
+        sssssss               ssss        sss     sss      sss      ss     sss      ss     ss      ss     ss   ss
+       ssssssssssssss        ssss        sss     sss      sss      ss     sss       ss    ss      ss      ss  ss
+       ssssssssssssss       ssss        sssssssssss      sssssssssss     sss       ss    ss      ss       ssss
+                ssss       ssss        sssssssssss      sssssss         sss       ss    ss      ss       ssss
+               ssss       ssss        sss     sss      sss  sss        sss       ss    ss      ss       ss  ss
+    ssssssssssssss       ssss        sss     sss      sss   sss       sss     ss     ssssssssss        ss   ss
+  sssssssssssssss       ssss        sss     sss      sss     sss     sssssssss      ssssssssss       sss    sss        Made By : Pr0t0n
+
+
 Github stargazers information gathering tool
 
 # Project Files will be uploaded soon....
