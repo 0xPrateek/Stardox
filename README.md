@@ -1,4 +1,4 @@
-# Stardox - Readme will be updated soon
+# Stardox - Readme will be updated soon.
 Github stargazers information gathering tool
 
 
