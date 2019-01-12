@@ -2,4 +2,4 @@
 Github stargazers information gathering tool
 
   
-![Stardox!](https://i.imgur.com/AJ8nsQK.png)
+![Stardox!](https://i.imgur.com/RxVd4Or.png)
