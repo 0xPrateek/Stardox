@@ -34,8 +34,10 @@ P.S: Many new things will be added soon.
 
 ![Image 1](https://i.imgur.com/ebFqa32.png)
 
+ **Fetching data of repository.**
 ![Image 2](https://i.imgur.com/dGdANO9.png)
 
+ **List tree view of fetched data.**
 ![Image 3](https://i.imgur.com/a1gKK1j.png)
 
 ### Getting Started
@@ -58,4 +60,4 @@ Example Usage : `python3 ./stardox.py
 Any and all contributions, issues, features and tips are welcome.
 
 ### License
-[![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/0xPrateek/Stardox/blob/master/LICENSE)`
+**Stardox** is licence under [GPL v3.0 license](https://www.gnu.org/licenses/gpl-3.0.en.html)
