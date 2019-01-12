@@ -30,6 +30,11 @@ Stardox is an advanced github stargazers information gathering tool. It scraps G
 
 P.S: Many new things will be added soon.
 
+### Gallery
+![Image 1](https://i.imgur.com/ebFqa32.png)
+![Image 2](https://i.imgur.com/dGdANO9.png)
+![Image 3](https://i.imgur.com/a1gKK1j.png)
+
 ### Getting Started
 
 #### Steps to setup :
