@@ -15,6 +15,6 @@ setup(
    description="Github Stargazers information gathering tool",
    long_description=long_description,
    url='https://github.com/0xprateek/stardox',
-   packages=['Stardox'],
+   packages=['/'],
    install_requires=requirements
 )
