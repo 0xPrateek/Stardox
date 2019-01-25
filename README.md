@@ -27,6 +27,8 @@ Stardox is an advanced github stargazers information gathering tool. It scraps G
 2. `Total stars`
 3. `Total Followers`
 4. `Total Following`
+5. `Stargazer's Email`
+
 
 P.S: Many new things will be added soon.
 
