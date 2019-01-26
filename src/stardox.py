@@ -66,9 +66,12 @@ def get_latest_commit(repo_name,username):
             label = str(a_tag.get("aria-label"))
             if "Merge" not in label and label != "None":
                 patch_data = requests.get("https://github.com{}{}".format(URL,".patch")).text
-                start=patch_data.index("<")
-                stop=patch_data.index(">")
-                email = patch_data[start+1:stop]
+                try:
+                    start=patch_data.index("<")
+                    stop=patch_data.index(">")
+                    email = patch_data[start+1:stop]
+                except ValueError:
+                    return "Not enough information."
                 break
 
     if email != "":
