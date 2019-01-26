@@ -14,8 +14,9 @@ def plotdata(stars,pos,count):
 \033[1;37m|  |--\033[1;32mTotal Stars       :: \033[1;37m{}
 \033[1;37m|  |--\033[1;32mTotal Followers   :: \033[1;37m{}
 \033[1;37m|  |--\033[1;32mTotal Following   :: \033[1;37m{}
+\033[1;37m|  |--\033[1;32mUser Email        :: \033[1;37m{}
 \033[1;37m|'''
-.format("|",data.name_list[pos],data.username_list[pos],data.repo_list[pos],data.star_list[pos],data.followers_list[pos],data.following_list[pos]))
+.format("|",data.name_list[pos],data.username_list[pos],data.repo_list[pos],data.star_list[pos],data.followers_list[pos],data.following_list[pos],data.email_list[pos]))
 
 	elif count==stars:
 		print('''{}
@@ -25,5 +26,6 @@ def plotdata(stars,pos,count):
 \033[1;37m|  |--\033[1;32mTotal Stars       :: \033[1;37m{}
 \033[1;37m|  |--\033[1;32mTotal Followers   :: \033[1;37m{}
 \033[1;37m|  |--\033[1;32mTotal Following   :: \033[1;37m{}
+\033[1;37m|  |--\033[1;32mUser Email        :: \033[1;37m{}
 '''
-.format("|",data.name_list[pos],data.username_list[pos],data.repo_list[pos],data.star_list[pos],data.followers_list[pos],data.following_list[pos]))
+.format("|",data.name_list[pos],data.username_list[pos],data.repo_list[pos],data.star_list[pos],data.followers_list[pos],data.following_list[pos],data.email_list[pos]))
