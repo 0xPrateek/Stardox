@@ -51,6 +51,31 @@ def verify_url(page_data):
         return True
 
 
+def get_latest_commit(repo_name,username):
+
+    email= ""
+
+    commit_data = requests.get("https://github.com/{}/{}/commits?author={}".format(username,repo_name,username)).text
+    soup = BeautifulSoup(commit_data,"lxml")
+
+    a_tags = soup.findAll("a")
+    for a_tag in a_tags:
+        URL = a_tag.get("href")
+
+        if URL.startswith("/{}/{}/commit/".format(username,repo_name)):
+            label = str(a_tag.get("aria-label"))
+            if "Merge" not in label and label != "None":
+                patch_data = requests.get("https://github.com{}{}".format(URL,".patch")).text
+                start=patch_data.index("<")
+                stop=patch_data.index(">")
+                email = patch_data[start+1:stop]
+                break
+
+    if email != "":
+        return email
+    else:
+        return "Not enough information."
+
 if __name__ == '__main__':
 
     Logo.header()         # For Displaying Logo
@@ -125,10 +150,27 @@ if __name__ == '__main__':
     print(colors.red+"--------------------------------------------------------------------------",colors.green,end="\n\n")
 
     while(count<=star_value):
-
+        
         starer_url="https://github.com/"+data.username_list[pos]
         user_html=requests.get(starer_url).text
         soup3=BeautifulSoup(user_html,"lxml")
+
+        repo_data = requests.get("https://github.com/{}?tab=repositories&type=source".format(data.username_list[pos])).text
+        repo_soup = BeautifulSoup(repo_data,"lxml")
+
+        a_tags = repo_soup.findAll("a")
+        repositories_list = []
+        for a_tag in a_tags:
+            if a_tag.get("itemprop") == "name codeRepository":
+                repositories_list.append(a_tag.get_text().strip())
+
+        if len(repositories_list) > 0:
+
+            email = get_latest_commit(repositories_list[0],data.username_list[pos])
+            data.email_list.append(str(email))
+        else:
+            data.email_list.append("Not enough information.")
+
         if(user_html!=None):
             items=soup3.findAll("a",{"class":"UnderlineNav-item"})
             for item in items[1:]:
