@@ -40,7 +40,7 @@ P.S: Many new things will be added soon.
 ![Image 2](https://i.imgur.com/dGdANO9.png)
 
  **List tree view of fetched data.**
-![Image 3](https://i.imgur.com/a1gKK1j.png)
+![Image 3](https://i.imgur.com/MIX1VmA.jpg)
 
 ### Getting Started
 
