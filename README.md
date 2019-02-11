@@ -60,6 +60,6 @@ Example Usage : `python3 ./stardox.py
 
 ### Contributing
 Any and all contributions, issues, features and tips are welcome.
-
+<h10> my name is ashish kumar verma </h10>
 ### License
 **Stardox** is licence under [GPL v3.0 license](https://www.gnu.org/licenses/gpl-3.0.en.html)
