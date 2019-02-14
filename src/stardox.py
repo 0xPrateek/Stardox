@@ -83,7 +83,7 @@ if __name__ == '__main__':
 
     Logo.header()         # For Displaying Logo
 
-    repository_link = str(input("\033[37mEnter the repository address :: \x1b[0m"))    # Getting repository Address
+    repository_link = input("\033[37mEnter the repository address :: \x1b[0m")    # Getting repository Address
     print("\n")
     repository_link = format_url(repository_link)       # Assuring that URL starts with https://
 
