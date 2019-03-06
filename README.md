@@ -52,10 +52,11 @@ P.S: Many new things will be added soon.
 
 #### Starting Stardox :
 
-1. `cd stardox/src`
-2. `python3 stardox.py`
-
-Example Usage : `python3 ./stardox.py
+1. `cd stardox/src`<br/>
+2.  a)  **Using Command line arguments** <br/>
+         `python3 stardox.py https://github.com/Username/repository-URL `<br/>
+    b)  **Without Command line arguments**<br/>
+     `    python3 stardox.py`<br/>
 
 
 ### Contributing
