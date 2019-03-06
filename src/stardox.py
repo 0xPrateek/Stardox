@@ -6,6 +6,7 @@ import colors
 import Logo
 import time
 from bs4 import BeautifulSoup
+import argparse
 
 def formated(string):
 
@@ -83,8 +84,16 @@ if __name__ == '__main__':
 
     Logo.header()         # For Displaying Logo
 
-    repository_link = input("\033[37mEnter the repository address :: \x1b[0m")    # Getting repository Address
-    print("\n")
+    parser = argparse.ArgumentParser()
+    parser.add_argument('repositoryURL',help = " Path to repository.")
+
+    if len(sys.argv)>1:
+        args = parser.parse_args()
+        repository_link = args.repositoryURL
+    else:
+        repository_link = input("\033[37mEnter the repository address :: \x1b[0m")    # Getting repository Address
+        print("\n")
+
     repository_link = format_url(repository_link)       # Assuring that URL starts with https://
 
     try:
@@ -153,7 +162,7 @@ if __name__ == '__main__':
     print(colors.red+"--------------------------------------------------------------------------",colors.green,end="\n\n")
 
     while(count<=star_value):
-        
+
         starer_url="https://github.com/"+data.username_list[pos]
         user_html=requests.get(starer_url).text
         soup3=BeautifulSoup(user_html,"lxml")
