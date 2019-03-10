@@ -48,7 +48,7 @@ P.S: Many new things will be added soon.
 
 1. `git clone https://github.com/0xprateek/stardox`
 2. `cd stardox`
-3. `python ./setup.py install`
+3. `pip install -r requirements.txt`
 
 #### Starting Stardox :
 
