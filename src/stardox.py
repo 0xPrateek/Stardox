@@ -145,22 +145,30 @@ if __name__ == '__main__':
             break
 
     stargazer_link=repository_link+"/stargazers"
-    stargazer_html=requests.get(stargazer_link).text
-    soup2=BeautifulSoup(stargazer_html,"lxml")
-    follow_names=soup2.findAll("h3",{"class":"follow-list-name"})
+    colors.process("Fetching stargazers list")
 
-    for name in follow_names:
-        a_tag=name.findAll("a")
-        data.name_list.append(a_tag[0].get_text())
-        username=a_tag[0].get("href")
-        data.username_list.append(username[1:])
+    while (stargazer_link!=None):
+        stargazer_html=requests.get(stargazer_link).text
+        soup2=BeautifulSoup(stargazer_html,"lxml")
+        a_next = soup2.findAll("a")
+        for a in a_next:
+            if a.get_text() == "Next":
+                stargazer_link = a.get('href')
+                break
+            else:
+                stargazer_link = None
+        follow_names=soup2.findAll("h3",{"class":"follow-list-name"})
+        for name in follow_names:
+            a_tag=name.findAll("a")
+            data.name_list.append(a_tag[0].get_text())
+            username=a_tag[0].get("href")
+            data.username_list.append(username[1:])
 
     count=1
     pos=0
     colors.process("Doxing started ...\n")
     time.sleep(1)
     print(colors.red+"--------------------------------------------------------------------------",colors.green,end="\n\n")
-
     while(count<=star_value):
 
         starer_url="https://github.com/"+data.username_list[pos]
