@@ -57,6 +57,15 @@ P.S: Many new things will be added soon.
          `python3 stardox.py https://github.com/Username/repository-URL `<br/>
     b)  **Without Command line arguments**<br/>
      `    python3 stardox.py`<br/>
+  #### Usage :
+     stardox.py [-h] [-v] repositoryURL
+
+  ##### positional arguments:
+     repositoryURL  Path to repository.
+
+  ##### optional arguments:
+     -h, --help     show this help message and exit
+     -v, --verbose  Verbose
 
 
 ### Contributing
