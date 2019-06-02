@@ -18,25 +18,25 @@ pink = '\033[95m'
 lightcyan = '\033[96m'
 end = '\x1b[0m'
 
-
 def error(message):
     message = str(message)
     initial =red + '[-] '
     print(initial + end + message)
 
-
-def success(message):
+def success(message,verbose):
     message = str(message)
     initial = lightgreen+'[+] '
-    print(initial + end + message)
+    if verbose:
+        print(initial + end + message)
 
-
-def info(message):
+def info(message,verbose):
     message = str(message)
     message = '[!] ' + message
-    print(yellow + message + end)
+    if verbose:
+        print(initial + end + message)
 
-def process(message):
+def process(message,verbose):
     message=str(message)
     initial= white + '[~] '
-    print(initial + end + message)
+    if verbose:
+        print(initial + end + message)
