@@ -67,27 +67,40 @@ if __name__ == '__main__':
     Logo.header()         # For Displaying Logo
     parser = argparse.ArgumentParser()
     parser.add_argument('repositoryURL',help = " Path to repository.")
+    parser.add_argument('-v','--verbose',help="Verbose",required=False,default=True,action='store_false')
     try:
         import requests
         from bs4 import BeautifulSoup
     except ImportError:
         colors.error('Error importing requests module.')
         sys.exit(1)
-    if len(sys.argv)>1:
-        args = parser.parse_args()
-        repository_link = args.repositoryURL
-    else:
+    if len(sys.argv) == 1:
         repository_link = input("\033[37mEnter the repository address :: \x1b[0m")    # Getting repository Address
         print("\n")
+        verbose = True
+    elif len(sys.argv) == 2:
+        if sys.argv[1] == '-v':
+            repository_link = input("\033[37mEnter the repository address :: \x1b[0m")    # Getting repository Address
+            verbose = False
+        else:
+            args = parser.parse_args()
+            repository_link = args.repositoryURL
+            verbose = True
+    else:
+        args = parser.parse_args()
+        verbose = args.verbose
+        repository_link = args.repositoryURL
+
     repository_link = format_url(repository_link)       # Assuring that URL starts with https://
+
     try:
         html = requests.get(repository_link,timeout=8).text       # Getting HTML page of repository
-    except requests.exceptions.MissingSchema as e:
+    except:
         colors.error("Enter the repositories url in given format [ https://github.com/username/repository_name ]")
         sys.exit(1)
     result=verify_url(html)                             # Checking if the url given is of a repository or not.
     if result is True:
-        colors.success("Got the repository data ")
+        colors.success("Got the repository data ",verbose)
         time.sleep(1)
     else:
         colors.error("Please enter the correct URL ")
@@ -100,7 +113,7 @@ if __name__ == '__main__':
         sys.exit(1)
     title=getting_header(soup1)                         # Getting the title of the page
     data.header=title                                   # Storing title of the page as Project Title
-    colors.success("Repository Title : "+title)
+    colors.success("Repository Title : "+title,verbose)
     time.sleep(1)
     star_value=0
     watch_value = 0
@@ -111,24 +124,24 @@ if __name__ == '__main__':
         if(string.endswith("/watchers")):
             watch_value=(a_tag.get_text()).strip()
             watch_value=formated(watch_value)
-            colors.success("Total watchers : "+watch_value)
+            colors.success("Total watchers : "+watch_value,verbose)
             time.sleep(1)
             watch_value=int(watch_value)
         if(string.endswith("/stargazers")):
             star_value=(a_tag.get_text()).strip()
             star_value=formated(star_value)
-            colors.success("Total stargazers : "+star_value)
+            colors.success("Total stargazers : "+star_value,verbose)
             time.sleep(1)
             star_value=int(star_value)
         if(string.endswith("/members")):
             fork_value=(a_tag.get_text()).strip()
             fork_value=formated(fork_value)
-            colors.success("Total Forks : "+fork_value)
+            colors.success("Total Forks : "+fork_value,verbose)
             time.sleep(1)
             fork_value=int(fork_value)
             break
     stargazer_link=repository_link+"/stargazers"
-    colors.process("Fetching stargazers list")
+    colors.process("Fetching stargazers list",verbose)
     while (stargazer_link!=None):
         stargazer_html=requests.get(stargazer_link).text
         soup2=BeautifulSoup(stargazer_html,"lxml")
@@ -147,7 +160,7 @@ if __name__ == '__main__':
             data.username_list.append(username[1:])
     count=1
     pos=0
-    colors.process("Doxing started ...\n")
+    colors.process("Doxing started ...\n",verbose)
     time.sleep(1)
     print(colors.red+"--------------------------------------------------------------------------",colors.green,end="\n\n")
     while(count<=star_value):
