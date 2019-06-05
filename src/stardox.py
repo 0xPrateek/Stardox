@@ -99,7 +99,7 @@ if __name__ == '__main__':
         colors.error("Enter the repositories url in given format [ https://github.com/username/repository_name ]")
         sys.exit(1)
     result=verify_url(html)                             # Checking if the url given is of a repository or not.
-    if result is True:
+    if result:
         colors.success("Got the repository data ",verbose)
         time.sleep(1)
     else:
@@ -115,9 +115,7 @@ if __name__ == '__main__':
     data.header=title                                   # Storing title of the page as Project Title
     colors.success("Repository Title : "+title,verbose)
     time.sleep(1)
-    star_value=0
-    watch_value = 0
-    fork_value =0
+    star_value = watch_value = fork_value = 0
     a_tags=soup1.findAll("a")                           # Finding all the 'a' tags in response html data.
     for a_tag in a_tags:                                # Finding total stargazers of the repository
         string=a_tag.get("href")
@@ -162,7 +160,7 @@ if __name__ == '__main__':
     pos=0
     colors.process("Doxing started ...\n",verbose)
     time.sleep(1)
-    print(colors.red+"--------------------------------------------------------------------------",colors.green,end="\n\n")
+    print(colors.red+"{0}".format("-")*75,colors.green,end="\n\n")
     while(count<=star_value):
         starer_url="https://github.com/"+data.username_list[pos]
         user_html=requests.get(starer_url).text
@@ -206,4 +204,4 @@ if __name__ == '__main__':
                 sys.exit(1)
         count+=1
         pos+=1
-    print(colors.green+"\n--------------------------------------------------------------------------",end="\n\n")
+    print(colors.green+"\n{0}".format('-')*75,end="\n\n")
