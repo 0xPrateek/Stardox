@@ -16,6 +16,10 @@
   <a href="https://github.com/0xprateek/stardox">
     <img src="https://img.shields.io/badge/OS-Linux-orange.svg">
   </a>
+  </br></br>
+  This Tool is available in:</br>
+  <a href = "https://blackarch.org/recon.html"><img src = "https://raw.githubusercontent.com/0xPrateek/Stardox/master/Logo/blackarch.png"></a>
+  </br>
 </p>
 
 ## About [Stardox](https://github.com/0xprateek/stardox)
