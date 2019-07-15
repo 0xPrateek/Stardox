@@ -1,9 +1,11 @@
+# Importing modules
 import sys
 import colors
 import Logo
 import time
 import argparse
 
+# Getting the numeric value out of the string; used for getting wtachers, starers, followers etc.
 def formated(string):
     new_string=[]
     string=list(string)
@@ -13,12 +15,14 @@ def formated(string):
     string=''.join(new_string)
     return string
 
+# Getting the name of the repository.
 def getting_header(soup_text):
     title=soup_text.title.get_text()
     start=title.find('/')
     stop=title.find(':')
     return title[start+1:stop]
 
+# Function to make sure all the Url passed is made in particualr format.
 def format_url(url):
     if url.startswith('http://'):
         url=url.replace('http','https')
@@ -31,6 +35,7 @@ def format_url(url):
         sys.exit(1)
     return url
 
+# Function to verify that the page URL given is pointing to some repository or not.
 def verify_url(page_data):
     data=str(page_data)
     if "Popular repositories" in data:
@@ -40,6 +45,7 @@ def verify_url(page_data):
     else:
         return True
 
+# Function returning email of the stargazer
 def get_latest_commit(repo_name,username):
     email= ""
     commit_data = requests.get("https://github.com/{}/{}/commits?author={}".format(username,repo_name,username)).text
@@ -65,6 +71,7 @@ def get_latest_commit(repo_name,username):
 
 if __name__ == '__main__':
     Logo.header()         # For Displaying Logo
+
     parser = argparse.ArgumentParser()
     parser.add_argument('repositoryURL',help = " Path to repository.")
     parser.add_argument('-v','--verbose',help="Verbose",required=False,default=True,action='store_false')
@@ -119,19 +126,19 @@ if __name__ == '__main__':
     a_tags=soup1.findAll("a")                           # Finding all the 'a' tags in response html data.
     for a_tag in a_tags:                                # Finding total stargazers of the repository
         string=a_tag.get("href")
-        if(string.endswith("/watchers")):
+        if(string.endswith("/watchers")):               # Finding total watchers
             watch_value=(a_tag.get_text()).strip()
             watch_value=formated(watch_value)
             colors.success("Total watchers : "+watch_value,verbose)
             time.sleep(1)
             watch_value=int(watch_value)
-        if(string.endswith("/stargazers")):
+        if(string.endswith("/stargazers")):             # Finding total stargazers
             star_value=(a_tag.get_text()).strip()
             star_value=formated(star_value)
             colors.success("Total stargazers : "+star_value,verbose)
             time.sleep(1)
             star_value=int(star_value)
-        if(string.endswith("/members")):
+        if(string.endswith("/members")):                # Finding total members
             fork_value=(a_tag.get_text()).strip()
             fork_value=formated(fork_value)
             colors.success("Total Forks : "+fork_value,verbose)
@@ -140,7 +147,7 @@ if __name__ == '__main__':
             break
     stargazer_link=repository_link+"/stargazers"
     colors.process("Fetching stargazers list",verbose)
-    while (stargazer_link!=None):
+    while (stargazer_link!=None):                                   # Getting list of all the stargazers
         stargazer_html=requests.get(stargazer_link).text
         soup2=BeautifulSoup(stargazer_html,"lxml")
         a_next = soup2.findAll("a")
@@ -161,7 +168,7 @@ if __name__ == '__main__':
     colors.process("Doxing started ...\n",verbose)
     time.sleep(1)
     print(colors.red+"{0}".format("-")*75,colors.green,end="\n\n")
-    while(count<=star_value):
+    while(count<=star_value):                                         # Fetching details of stargazers one by one.
         starer_url="https://github.com/"+data.username_list[pos]
         user_html=requests.get(starer_url).text
         soup3=BeautifulSoup(user_html,"lxml")
@@ -173,32 +180,32 @@ if __name__ == '__main__':
             if a_tag.get("itemprop") == "name codeRepository":
                 repositories_list.append(a_tag.get_text().strip())
         if len(repositories_list) > 0:
-            email = get_latest_commit(repositories_list[0],data.username_list[pos])
+            email = get_latest_commit(repositories_list[0],data.username_list[pos])         # Getting email of the stargazer
             data.email_list.append(str(email))
         else:
             data.email_list.append("Not enough information.")
         if(user_html!=None):
             items=soup3.findAll("a",{"class":"UnderlineNav-item"})
             for item in items[1:]:
-                if item.get("href").endswith("repositories")==True:
+                if item.get("href").endswith("repositories")==True:                         # Getting total repositories of the stargazer
                     a_tag=item.findAll("span")
                     repo_count=a_tag[0].get_text()
                     data.repo_list.append(formated(repo_count))
-                elif item.get("href").endswith("stars")==True:
+                elif item.get("href").endswith("stars")==True:                              # Getting total stars by the stargazer
                     a_tag=item.findAll("span")
                     star_count=a_tag[0].get_text()
                     data.star_list.append(formated(star_count))
-                elif item.get("href").endswith("followers")==True:
+                elif item.get("href").endswith("followers")==True:                          # Getting total followers of the stargazers
                     a_tag=item.findAll("span")
                     followers_count=a_tag[0].get_text()
                     data.followers_list.append(formated(followers_count))
-                elif item.get("href").endswith("following")==True:
+                elif item.get("href").endswith("following")==True:                          # Getting following list of the stargazers
                     a_tag=item.findAll("span")
                     following_count=a_tag[0].get_text()
                     data.following_list.append(formated(following_count))
             try:
                 import structer
-                structer.plotdata(star_value,pos,count)
+                structer.plotdata(star_value,pos,count)                                      # Plotting the tree structer of the fetched details
             except ImportError:
                 colors.error("Error importing structer module.")
                 sys.exit(1)
