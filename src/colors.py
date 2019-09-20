@@ -34,7 +34,7 @@ def success(message,verbose):
 # Used for printing warning or information on terminal
 def info(message,verbose):
     message = str(message)
-    message = '[!] ' + message
+    initial = white + '[!] '
     if verbose:                               # Checking if verbose is True or False
         print(initial + end + message)
 
