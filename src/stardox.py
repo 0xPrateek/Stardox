@@ -211,4 +211,4 @@ if __name__ == '__main__':
                 sys.exit(1)
         count+=1
         pos+=1
-    print(colors.green+"\n{0}".format('-')*75,end="\n\n")
+    print("\n",colors.green+"{0}".format("-")*75,colors.green,end="\n\n")
