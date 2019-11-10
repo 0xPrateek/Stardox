@@ -16,9 +16,16 @@
   <a href="https://github.com/0xprateek/stardox">
     <img src="https://img.shields.io/badge/OS-Linux-orange.svg">
   </a>
+  </br></br>
+  This Tool is available in:</br>
+  <a href = "https://blackarch.org/recon.html"><img src = "https://raw.githubusercontent.com/0xPrateek/Stardox/master/Logo/blackarch.png"></a>
+  </br>
 </p>
 
 ## About [Stardox](https://github.com/0xprateek/stardox)
+
+[![Join the chat at https://gitter.im/Stardox-gitter/community](https://badges.gitter.im/Stardox-gitter/community.svg)](https://gitter.im/Stardox-gitter/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Stardox is an advanced github stargazers information gathering tool. It scraps Github for information and display them in list tree view.It can be used for collecting information of your's/someones repository stargazers details.
 
 ##### What data it fetchs :
@@ -48,18 +55,28 @@ P.S: Many new things will be added soon.
 
 1. `git clone https://github.com/0xprateek/stardox`
 2. `cd stardox`
-3. `python ./setup.py install`
+3. `pip install -r requirements.txt`
 
 #### Starting Stardox :
 
-1. `cd stardox/src`
-2. `python3 stardox.py`
+1. `cd stardox/src`<br/>
+2.  a)  **Using Command line arguments** <br/>
+         `python3 stardox.py https://github.com/Username/repository-URL `<br/>
+    b)  **Without Command line arguments**<br/>
+     `    python3 stardox.py`<br/>
+  #### Usage :
+     stardox.py [-h] [-v] repositoryURL
 
-Example Usage : `python3 ./stardox.py
+  ##### positional arguments:
+     repositoryURL  Path to repository.
+
+  ##### optional arguments:
+     -h, --help     show this help message and exit
+     -v, --verbose  Verbose
 
 
 ### Contributing
 Any and all contributions, issues, features and tips are welcome.
-<h10> my name is ashish kumar verma </h10>
+
 ### License
 **Stardox** is licence under [GPL v3.0 license](https://www.gnu.org/licenses/gpl-3.0.en.html)
