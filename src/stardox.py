@@ -4,16 +4,6 @@ import colors
 import Logo
 import argparse
 
-# Getting the numeric value out of the string; used for getting wtachers, starers, followers etc.
-def formated(string):
-    new_string=[]
-    string=list(string)
-    for value in string:
-        if(value.isnumeric()):
-            new_string.append(value)
-    string=''.join(new_string)
-    return string
-
 # Getting the name of the repository.
 def getting_header(soup_text):
     title=soup_text.title.get_text()
@@ -126,19 +116,13 @@ if __name__ == '__main__':
             string=a_tag.get("href")
             if(string.endswith("/watchers")):               # Finding total watchers
                 watch_value=(a_tag.get_text()).strip()
-                watch_value=formated(watch_value)
                 colors.success("Total watchers : "+watch_value,verbose)
-                watch_value=int(watch_value)
             if(string.endswith("/stargazers")):             # Finding total stargazers
                 star_value=(a_tag.get_text()).strip()
-                star_value=formated(star_value)
                 colors.success("Total stargazers : "+star_value,verbose)
-                star_value=int(star_value)
             if(string.endswith("/members")):                # Finding total members
                 fork_value=(a_tag.get_text()).strip()
-                fork_value=formated(fork_value)
                 colors.success("Total Forks : "+fork_value,verbose)
-                fork_value=int(fork_value)
                 break
         stargazer_link=repository_link+"/stargazers"
         colors.process("Fetching stargazers list",verbose)
@@ -162,7 +146,7 @@ if __name__ == '__main__':
         pos=0
         colors.process("Doxing started ...\n",verbose)
         print(colors.red+"{0}".format("-")*75,colors.green,end="\n\n")
-        while(count<=star_value):                                         # Fetching details of stargazers one by one.
+        while(count<=len(data.username_list)):                                         # Fetching details of stargazers one by one.
             starer_url="https://github.com/"+data.username_list[pos]
             user_html=requests.get(starer_url).text
             soup3=BeautifulSoup(user_html,"lxml")
@@ -184,22 +168,22 @@ if __name__ == '__main__':
                     if item.get("href").endswith("repositories")==True:                         # Getting total repositories of the stargazer
                         a_tag=item.findAll("span")
                         repo_count=a_tag[0].get_text()
-                        data.repo_list.append(formated(repo_count))
+                        data.repo_list.append(repo_count)
                     elif item.get("href").endswith("stars")==True:                              # Getting total stars by the stargazer
                         a_tag=item.findAll("span")
                         star_count=a_tag[0].get_text()
-                        data.star_list.append(formated(star_count))
+                        data.star_list.append(star_count)
                     elif item.get("href").endswith("followers")==True:                          # Getting total followers of the stargazers
                         a_tag=item.findAll("span")
                         followers_count=a_tag[0].get_text()
-                        data.followers_list.append(formated(followers_count))
+                        data.followers_list.append(followers_count)
                     elif item.get("href").endswith("following")==True:                          # Getting following list of the stargazers
                         a_tag=item.findAll("span")
                         following_count=a_tag[0].get_text()
-                        data.following_list.append(formated(following_count))
+                        data.following_list.append(following_count)
                 try:
                     import structer
-                    structer.plotdata(star_value,pos,count)                                      # Plotting the tree structer of the fetched details
+                    structer.plotdata(len(data.username_list),pos,count)                                      # Plotting the tree structer of the fetched details
                 except ImportError:
                     colors.error("Error importing structer module.")
                     sys.exit(1)
