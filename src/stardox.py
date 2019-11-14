@@ -2,7 +2,6 @@
 import sys
 import colors
 import Logo
-import time
 import argparse
 
 # Getting the numeric value out of the string; used for getting wtachers, starers, followers etc.
@@ -109,7 +108,6 @@ if __name__ == '__main__':
         result=verify_url(html)                             # Checking if the url given is of a repository or not.
         if result:
             colors.success("Got the repository data ",verbose)
-            time.sleep(1)
         else:
             colors.error("Please enter the correct URL ")
             sys.exit(0)
@@ -122,7 +120,6 @@ if __name__ == '__main__':
         title=getting_header(soup1)                         # Getting the title of the page
         data.header=title                                   # Storing title of the page as Project Title
         colors.success("Repository Title : "+title,verbose)
-        time.sleep(1)
         star_value = watch_value = fork_value = 0
         a_tags=soup1.findAll("a")                           # Finding all the 'a' tags in response html data.
         for a_tag in a_tags:                                # Finding total stargazers of the repository
@@ -131,19 +128,16 @@ if __name__ == '__main__':
                 watch_value=(a_tag.get_text()).strip()
                 watch_value=formated(watch_value)
                 colors.success("Total watchers : "+watch_value,verbose)
-                time.sleep(1)
                 watch_value=int(watch_value)
             if(string.endswith("/stargazers")):             # Finding total stargazers
                 star_value=(a_tag.get_text()).strip()
                 star_value=formated(star_value)
                 colors.success("Total stargazers : "+star_value,verbose)
-                time.sleep(1)
                 star_value=int(star_value)
             if(string.endswith("/members")):                # Finding total members
                 fork_value=(a_tag.get_text()).strip()
                 fork_value=formated(fork_value)
                 colors.success("Total Forks : "+fork_value,verbose)
-                time.sleep(1)
                 fork_value=int(fork_value)
                 break
         stargazer_link=repository_link+"/stargazers"
@@ -167,7 +161,6 @@ if __name__ == '__main__':
         count=1
         pos=0
         colors.process("Doxing started ...\n",verbose)
-        time.sleep(1)
         print(colors.red+"{0}".format("-")*75,colors.green,end="\n\n")
         while(count<=star_value):                                         # Fetching details of stargazers one by one.
             starer_url="https://github.com/"+data.username_list[pos]
