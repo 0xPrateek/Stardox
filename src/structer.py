@@ -24,7 +24,7 @@ def plotdata(stars, pos, count):
 
     elif(count > 1 and count < stars):
         print(
-		    '''\033[1;37m{}
+            '''\033[1;37m{}
 \033[1;37m|-----\033[1;32m{} (@{})
 \033[1;37m|  |
 \033[1;37m|  |--\033[1;32mTotal Repsitories :: \033[1;37m{}
