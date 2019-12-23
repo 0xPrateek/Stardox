@@ -76,7 +76,8 @@ if __name__ == '__main__':
         Logo.header()  # For Displaying Logo
 
         parser = argparse.ArgumentParser()
-        parser.add_argument('repositoryURL', help=" Path to repository.")
+        parser.add_argument('-r','--rURL', help=" Path to repository.",
+                            required=False)
         parser.add_argument('-v', '--verbose', help="Verbose",
                             required=False, default=True, action='store_false')
         try:
@@ -84,25 +85,14 @@ if __name__ == '__main__':
             from bs4 import BeautifulSoup
         except ImportError:
             colors.error('Error importing requests module.')
-            sys.exit(1)
-        if len(sys.argv) == 1:  # Getting repository Address
-            repository_link = input(
-                            "\033[37mEnter the repository address :: \x1b[0m")
-            print("\n")
-            verbose = True
-        elif len(sys.argv) == 2:
-            if sys.argv[1] == '-v':  # Getting repository Address
-                repository_link = input(
-                            "\033[37mEnter the repository address :: \x1b[0m")
-                verbose = False
-            else:
-                args = parser.parse_args()
-                repository_link = args.repositoryURL
-                verbose = True
+        
+        args = parser.parse_args()
+        if args.rURL:
+            repository_link = args.rURL
         else:
-            args = parser.parse_args()
-            verbose = args.verbose
-            repository_link = args.repositoryURL
+            repository_link = input("\033[37mEnter the repository address :: \x1b[0m")
+
+        verbose = args.verbose
 
         # Assuring that URL starts with https://
         repository_link = format_url(repository_link)
