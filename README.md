@@ -57,18 +57,16 @@ P.S: Many new things will be added soon.
 
 1. `cd stardox/src`<br/>
 2.  a)  **Using Command line arguments** <br/>
-         `python3 stardox.py https://github.com/Username/repository-URL `<br/>
+         `python3 stardox.py -r https://github.com/Username/repository-URL `<br/>
     b)  **Without Command line arguments**<br/>
      `    python3 stardox.py`<br/>
   #### Usage :
-     stardox.py [-h] [-v] repositoryURL
-
-  ##### positional arguments:
-     repositoryURL  Path to repository.
+     usage: stardox.py [-h] [-r RURL] [-v]
 
   ##### optional arguments:
-     -h, --help     show this help message and exit
-     -v, --verbose  Verbose
+     -h, --help            show this help message and exit
+     -r RURL, --rURL RURL  Path to repository.
+     -v, --verbose         Verbose
 
 
 ### Contributing
