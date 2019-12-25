@@ -71,32 +71,10 @@ def get_latest_commit(repo_name, username):
         return "Not enough information."
 
 
-if __name__ == '__main__':
+def stardox(repo_link, ver):
     try:
-        Logo.header()  # For Displaying Logo
-
-        parser = argparse.ArgumentParser()
-        parser.add_argument('-r','--rURL', help=" Path to repository.",
-                            required=False)
-        parser.add_argument('-v', '--verbose', help="Verbose",
-                            required=False, default=True, action='store_false')
-        try:
-            import requests
-            from bs4 import BeautifulSoup
-        except ImportError:
-            colors.error('Error importing requests module.')
-        
-        args = parser.parse_args()
-        if args.rURL:
-            repository_link = args.rURL
-        else:
-            repository_link = input("\033[37mEnter the repository address :: \x1b[0m")
-
-        verbose = args.verbose
-
-        # Assuring that URL starts with https://
-        repository_link = format_url(repository_link)
-
+        repository_link = repo_link
+        verbose = ver
         try:
             # Getting HTML page of repository
             html = requests.get(repository_link, timeout=8).text
@@ -218,6 +196,42 @@ if __name__ == '__main__':
             pos += 1
         print("\n", colors.green + "{0}".format("-") * 75,
               colors.green, end="\n\n")
+    except KeyboardInterrupt:
+        print("\n\nYou're Great..!\nThanks for using :)")
+        sys.exit(0)
+
+
+if __name__ == '__main__':
+    try:
+        Logo.header()  # For Displaying Logo
+
+        parser = argparse.ArgumentParser()
+        parser.add_argument('-r', '--rURL', help=" Path to repository.",
+                            required=False)
+        parser.add_argument('-v', '--verbose', help="Verbose",
+                            required=False, default=True,
+                            action='store_false')
+        try:
+            import requests
+            from bs4 import BeautifulSoup
+        except ImportError:
+            colors.error('Error importing requests module.')
+
+        args = parser.parse_args()
+        verbose = args.verbose
+        if args.rURL:
+            repository_link = args.rURL
+            exec = True
+        elif len(sys.argv) == 1 or (len(sys.argv) == 2 and not verbose):
+            repository_link = input(
+                        "\033[37mEnter the repository address :: \x1b[0m")
+            exec = True
+
+        # Assuring that URL starts with https://
+        repository_link = format_url(repository_link)
+        if exec is True:
+            stardox(repository_link, verbose)
+
     except KeyboardInterrupt:
         print("\n\nYou're Great..!\nThanks for using :)")
         sys.exit(0)
