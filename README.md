@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="https://github.com/0xprateek"><img src="https://i.imgur.com/RxVd4Or.png" alt="Stardox"></a>
+  <a href="https://github.com/0xprateek"><img src="https://i.imgur.com/oIMDjCm.png" alt="Stardox"></a>
 </h1>
 
 <p align="center">  
@@ -8,11 +8,8 @@
     <img src="https://img.shields.io/badge/Python-3.x-green.svg">
   </a>
   <a href="https://github.com/0xprateek/stardox">
-    <img src="https://img.shields.io/badge/Version-v1.0.0%20(stable)-blue.svg">
+    <img src="https://img.shields.io/badge/Version-v1.0.0%20-blue.svg">
   </a>
-  <a href="https://github.com/0xPrateek/Stardox/blob/master/LICENSE">
-    <img src="https://img.shields.io/badge/License-GPLv3-orange.svg">
-  </a> 
   <a href="https://github.com/0xprateek/stardox">
     <img src="https://img.shields.io/badge/OS-Linux-orange.svg">
   </a>
