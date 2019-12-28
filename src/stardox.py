@@ -91,18 +91,18 @@ def save():
         rows[row][4] = data.following_list[row].strip()
         rows[row][5] = data.email_list[row]
 
-    file = args.path
-    if file is not None and file.endswith('.csv'):
+    file_path = args.path
+    if file_path is not None and file_path.endswith('.csv'):
         pass
     else:
-        csv_file = data.header + '.csv'
-        file = os.path.join(os.environ["HOME"], "Desktop", csv_file)
+        csv_file = data.header + '.csv'  # Name of csv file
+        file_path = os.path.join(os.environ["HOME"], "Desktop", csv_file)
     try:
-        with open(file, 'w') as csvfile:
+        with open(file_path, 'w') as csvfile:
             csvwriter = csv.writer(csvfile)
             csvwriter.writerow(fields)
             csvwriter.writerows(rows)
-            colors.success("Saved the data into " + file, True)
+            colors.success("Saved the data into " + file_path, True)
     except FileNotFoundError:
         colors.error("Please enter valid path.")
         sys.exit()
@@ -116,6 +116,7 @@ def stardox(repo_link, ver):
             if arg == '-s' or arg == '--save':
                 save_data = True
                 print_data = False
+
         repository_link = repo_link
         verbose = ver
         try:
