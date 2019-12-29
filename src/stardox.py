@@ -1,8 +1,10 @@
 # Importing modules
 import sys
+import os
 import colors
 import Logo
 import argparse
+import csv
 
 
 # Getting the name of the repository.
@@ -71,8 +73,50 @@ def get_latest_commit(repo_name, username):
         return "Not enough information."
 
 
+def save():
+    try:
+        import data
+    except ImportError:
+        colors.error('Error importing data module')
+        sys.exit(1)
+
+    fields = ['Username', 'Repositories', 'Stars', 'Followers', 'Following',
+              'Email']
+    rows = [[0 for x in range(6)] for y in range(len(data.username_list))]
+    for row in range(len(data.username_list)):
+        rows[row][0] = '@' + data.username_list[row]
+        rows[row][1] = data.repo_list[row].strip()
+        rows[row][2] = data.star_list[row].strip()
+        rows[row][3] = data.followers_list[row].strip()
+        rows[row][4] = data.following_list[row].strip()
+        rows[row][5] = data.email_list[row]
+
+    file_path = args.path
+    if file_path is not None and file_path.endswith('.csv'):
+        pass
+    else:
+        csv_file = data.header + '.csv'  # Name of csv file
+        file_path = os.path.join(os.environ["HOME"], "Desktop", csv_file)
+    try:
+        with open(file_path, 'w') as csvfile:
+            csvwriter = csv.writer(csvfile)
+            csvwriter.writerow(fields)
+            csvwriter.writerows(rows)
+            colors.success("Saved the data into " + file_path, True)
+    except FileNotFoundError:
+        colors.error("Please enter valid path.")
+        sys.exit()
+
+
 def stardox(repo_link, ver):
     try:
+        print_data = True
+        save_data = False
+        for arg in sys.argv[1:]:
+            if arg == '-s' or arg == '--save':
+                save_data = True
+                print_data = False
+
         repository_link = repo_link
         verbose = ver
         try:
@@ -185,15 +229,20 @@ def stardox(repo_link, ver):
                         a_tag = item.findAll("span")
                         following_count = a_tag[0].get_text()
                         data.following_list.append(following_count)
-                try:
-                    import structer
-                    # Plotting the tree structer of the fetched details
-                    structer.plotdata(len(data.username_list), pos, count)
-                except ImportError:
-                    colors.error("Error importing structer module.")
-                    sys.exit(1)
-            count += 1
-            pos += 1
+                if print_data is True:
+                    try:
+                        import structer
+                        # Plotting the tree structer of the fetched details
+                        structer.plotdata(len(data.username_list), pos, count)
+                    except ImportError:
+                        colors.error("Error importing structer module.")
+                        sys.exit(1)
+                count += 1
+                pos += 1
+
+        if save_data is True:
+            save()
+
         print("\n", colors.green + "{0}".format("-") * 75,
               colors.green, end="\n\n")
     except KeyboardInterrupt:
@@ -211,6 +260,12 @@ if __name__ == '__main__':
         parser.add_argument('-v', '--verbose', help="Verbose",
                             required=False, default=True,
                             action='store_false')
+        parser.add_argument('-s', '--save',
+                            help="Save the doxed data in a csv file."
+                                 " By default, saved at Desktop.",
+                            required=False, default="../Desktop",
+                            metavar='path', dest='path', nargs='?')
+
         try:
             import requests
             from bs4 import BeautifulSoup

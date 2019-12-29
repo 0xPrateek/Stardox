@@ -22,9 +22,9 @@
 </p>
 
 ## About [Stardox](https://github.com/0xprateek/stardox)
-Stardox is an advanced github stargazers information gathering tool. It scraps Github for information and display them in list tree view.It can be used for collecting information of your's/someones repository stargazers details.
+Stardox is an advanced github stargazers' information gathering tool. It scraps Github for information and displays it in list tree view. It can be used for collecting information of yours/someone's repository stargazers details.
 
-##### What data it fetchs :
+##### What data it fetches :
 
 1. `Total repsitories`
 2. `Total stars`
@@ -61,12 +61,15 @@ P.S: Many new things will be added soon.
     b)  **Without Command line arguments**<br/>
      `    python3 stardox.py`<br/>
   #### Usage :
-     usage: stardox.py [-h] [-r RURL] [-v]
+     usage: stardox.py [-h] [-r RURL] [-v] [-s [path]]
 
   ##### optional arguments:
      -h, --help            show this help message and exit
      -r RURL, --rURL RURL  Path to repository.
      -v, --verbose         Verbose
+     -s [path], --save [path]
+                        Save the doxed data in a csv file. By default, saved
+                        at Desktop.
 
 
 ### Contributing
