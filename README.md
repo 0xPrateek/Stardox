@@ -1,7 +1,4 @@
-<h1 align="center">
-  <br>
-  <a href="https://github.com/0xprateek"><img src="https://i.imgur.com/oIMDjCm.png" alt="Stardox"></a>
-</h1>
+![Stardox Logo](https://user-images.githubusercontent.com/43826054/71583944-7dfa3780-2b36-11ea-9f86-92f551a204f3.png)
 
 <p align="center">  
   <a href="https://docs.python.org/3/download.html">
