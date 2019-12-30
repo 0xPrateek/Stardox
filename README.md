@@ -37,10 +37,10 @@ P.S: Many new things will be added soon.
 
 ### Gallery
 
-![Image 1](https://i.imgur.com/ebFqa32.png)
+![Image 1](https://i.imgur.com/hkFdQwr.png)
 
  **Fetching data of repository.**
-![Image 2](https://i.imgur.com/dGdANO9.png)
+![Image 2](https://i.imgur.com/BVQJE8s.png)
 
  **List tree view of fetched data.**
 ![Image 3](https://i.imgur.com/MIX1VmA.jpg)
