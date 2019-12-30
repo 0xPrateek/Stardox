@@ -1,6 +1,7 @@
+<h1>
 <a href="https://github.com/0xprateek/stardox">
-  <p style="text-align:center;"><img src="https://user-images.githubusercontent.com/43826054/71583944-7dfa3780-2b36-11ea-9f86-92f551a204f3.png" alt="Logo"></p>
-</a>
+  <p style="text-align:center;"><img src="https://user-images.githubusercontent.com/43826054/71583944-7dfa3780-2b36-11ea-9f86-92f551a204f3.png" alt="Logo"></a>
+</h1>
 
 
 <p align="center">  
