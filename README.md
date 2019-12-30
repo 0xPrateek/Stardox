@@ -3,7 +3,6 @@
   <p style="text-align:center;"><img src="https://user-images.githubusercontent.com/43826054/71583944-7dfa3780-2b36-11ea-9f86-92f551a204f3.png" alt="Logo"></a>
 </h1>
 
-
 <p align="center">  
   <a href="https://docs.python.org/3/download.html">
     <img src="https://img.shields.io/badge/Python-3.x-green.svg">
