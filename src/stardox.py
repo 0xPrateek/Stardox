@@ -101,6 +101,7 @@ def email(repository_link):
     title = getting_header(soup1)  # Getting the title of the page
     data.header = title  # Storing title of the page as Project Title
     colors.success("Repository Title : " + title, verbose)
+    colors.process("Doxing started ...\n", verbose)
     stargazer_link = repository_link + "/stargazers"
     while (stargazer_link is not None):
         stargazer_html = requests.get(stargazer_link).text
@@ -120,9 +121,6 @@ def email(repository_link):
     count = 1
     pos = 0
     while(count <= len(data.username_list)):
-        starer_url = "https://github.com/" + data.username_list[pos]
-        user_html = requests.get(starer_url).text
-        soup3 = BeautifulSoup(user_html, "lxml")
         repo_data = requests.get(
             "https://github.com/{}?tab=repositories&type=source"
             .format(data.username_list[pos])).text
@@ -141,31 +139,48 @@ def email(repository_link):
             data.email_list.append("Not enough information.")
         count += 1
         pos += 1
-    print(data.email_list)
+
+    # Printing or saving the emails
+    print(colors.red + "{0}".format("-") * 75, colors.green, end="\n\n")
+    save_data = False
+    for arg in sys.argv[1:]:
+        if arg == '-s' or arg == '--save':
+            save_data = True
+            save(dat='emails')
+    if save_data is False:
+        for e in range(len(data.email_list)):
+            print(colors.white)
+            print(data.username_list[e], (30-len(data.username_list[e]))*' ',
+                  colors.green, '::',
+                  colors.white, data.email_list[e])
+    print("\n", colors.green + "{0}".format("-") * 75,
+          colors.green, end="\n\n")
 
 
-
-
-
-
-
-def save():
+def save(dat='stardox'):
     try:
         import data
     except ImportError:
         colors.error('Error importing data module')
         sys.exit(1)
 
-    fields = ['Username', 'Repositories', 'Stars', 'Followers', 'Following',
-              'Email']
-    rows = [[0 for x in range(6)] for y in range(len(data.username_list))]
-    for row in range(len(data.username_list)):
-        rows[row][0] = '@' + data.username_list[row]
-        rows[row][1] = data.repo_list[row].strip()
-        rows[row][2] = data.star_list[row].strip()
-        rows[row][3] = data.followers_list[row].strip()
-        rows[row][4] = data.following_list[row].strip()
-        rows[row][5] = data.email_list[row]
+    if dat == 'stardox':
+        fields = ['Username', 'Repositories', 'Stars', 'Followers',
+                  'Following', 'Email']
+        rows = [[0 for x in range(6)] for y in range(len(data.username_list))]
+        for row in range(len(data.username_list)):
+            rows[row][0] = '@' + data.username_list[row]
+            rows[row][1] = data.repo_list[row].strip()
+            rows[row][2] = data.star_list[row].strip()
+            rows[row][3] = data.followers_list[row].strip()
+            rows[row][4] = data.following_list[row].strip()
+            rows[row][5] = data.email_list[row]
+    elif dat == 'emails':
+        fields = ['Username', 'Email']
+        rows = [[0 for x in range(2)] for y in range(len(data.username_list))]
+        for row in range(len(data.username_list)):
+            rows[row][0] = '@' + data.username_list[row]
+            rows[row][1] = data.email_list[row]
 
     file_path = args.path
     if file_path is not None and file_path.endswith('.csv'):
@@ -357,7 +372,7 @@ if __name__ == '__main__':
             exec = False
             repository_link = format_url(args.rURL)
             email(repository_link)
-        if args.rURL:
+        elif args.rURL and not args.email:
             repository_link = args.rURL
             exec = True
         elif len(sys.argv) == 1 or (len(sys.argv) == 2 and not verbose):
