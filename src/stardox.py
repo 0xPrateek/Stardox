@@ -73,6 +73,82 @@ def get_latest_commit(repo_name, username):
         return "Not enough information."
 
 
+def email(repository_link):
+    try:
+        import data
+    except ImportError:
+        colors.error('Error importing data module')
+        sys.exit(1)
+
+    try:
+        # Getting HTML page of repository
+        html = requests.get(repository_link, timeout=8).text
+    except (requests.exceptions.RequestException,
+            requests.exceptions.HTTPError):
+        colors.error(
+            "Enter the repositories url in given format "
+            "[ https://github.com/username/repository_name ]")
+        sys.exit(1)
+    # Checking if the url given is of a repository or not.
+    result = verify_url(html)
+    if result:
+        colors.success("Got the repository data ", verbose)
+    else:
+        colors.error("Please enter the correct URL ")
+        sys.exit(0)
+    # Parsing the html data using BeautifulSoup
+    soup1 = BeautifulSoup(html, "lxml")
+    title = getting_header(soup1)  # Getting the title of the page
+    data.header = title  # Storing title of the page as Project Title
+    colors.success("Repository Title : " + title, verbose)
+    stargazer_link = repository_link + "/stargazers"
+    while (stargazer_link is not None):
+        stargazer_html = requests.get(stargazer_link).text
+        soup2 = BeautifulSoup(stargazer_html, "lxml")
+        a_next = soup2.findAll("a")
+        for a in a_next:
+            if a.get_text() == "Next":
+                stargazer_link = a.get('href')
+                break
+            else:
+                stargazer_link = None
+        follow_names = soup2.findAll("h3", {"class": "follow-list-name"})
+        for name in follow_names:
+            a_tag = name.findAll("a")
+            username = a_tag[0].get("href")
+            data.username_list.append(username[1:])
+    count = 1
+    pos = 0
+    while(count <= len(data.username_list)):
+        starer_url = "https://github.com/" + data.username_list[pos]
+        user_html = requests.get(starer_url).text
+        soup3 = BeautifulSoup(user_html, "lxml")
+        repo_data = requests.get(
+            "https://github.com/{}?tab=repositories&type=source"
+            .format(data.username_list[pos])).text
+        repo_soup = BeautifulSoup(repo_data, "lxml")
+        a_tags = repo_soup.findAll("a")
+        repositories_list = []
+        for a_tag in a_tags:
+            if a_tag.get("itemprop") == "name codeRepository":
+                repositories_list.append(a_tag.get_text().strip())
+        if len(repositories_list) > 0:
+            email = get_latest_commit(
+                    repositories_list[0],
+                    data.username_list[pos])  # Getting stargazer's email
+            data.email_list.append(str(email))
+        else:
+            data.email_list.append("Not enough information.")
+        count += 1
+        pos += 1
+    print(data.email_list)
+
+
+
+
+
+
+
 def save():
     try:
         import data
@@ -265,6 +341,9 @@ if __name__ == '__main__':
                                  " By default, saved at Desktop.",
                             required=False, default="../Desktop",
                             metavar='path', dest='path', nargs='?')
+        parser.add_argument('-e', '--email', action='store_true',
+                            help="Fetch only emails of stargazers.",
+                            required=False, default=False)
 
         try:
             import requests
@@ -274,6 +353,10 @@ if __name__ == '__main__':
 
         args = parser.parse_args()
         verbose = args.verbose
+        if args.email is True:
+            exec = False
+            repository_link = format_url(args.rURL)
+            email(repository_link)
         if args.rURL:
             repository_link = args.rURL
             exec = True
