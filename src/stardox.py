@@ -416,7 +416,8 @@ if __name__ == '__main__':
                             action='store_false')
         parser.add_argument('-s', '--save',
                             help="Save the doxed data in a csv file."
-                                 " By default, saved at Desktop.",
+                                 "Enter the path of the file or,"
+                                 " by default, saved at Desktop.",
                             required=False, default="../Desktop")
         parser.add_argument('-e', '--email', action='store_true',
                             help="Fetch only emails of stargazers.",
