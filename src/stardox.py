@@ -200,36 +200,37 @@ def save(dat='stardox'):
 
 
 class username_details(argparse.Action):
+    """Action class for username feature"""
     def __call__(self, parser, namespace, values, option_string=None):
-        self.u = values
-        self.url = requests.get("https://github.com/" + self.u)
+        self.user = values
+        self.url = requests.get("https://github.com/" + self.user)
         if self.url.status_code != requests.codes.ok:
             print(colors.red, "Unable to find username. Please enter"
-                              "valid username and try again.")
+                              " valid username and try again.")
+            sys.exit()
 
-        self.full_name = self.username = self.bio = self.location = "No information provided."
+        self.location = "No information provided."
+        self.full_name = self.username = self.bio = self.location
         self.soup = BeautifulSoup(self.url.text, features="lxml")
         try:
             self.full_name = self.soup.select('.vcard-fullname')[0].get_text()
             self.username = self.soup.select('.vcard-username')[0].get_text()
             self.bio = self.soup.select('.user-profile-bio')[0].get_text()
             self.location = self.soup.select('.p-label')[0].get_text()
-            self.email = self.get_email()
-            self.repos = self.soup.select('span[class="repo"]')
-            self.repo_list = []
-            for tag in self.repos:
-                self.repo_list.append(tag.get_text())
         except IndexError:
             pass
+        self.repo_list = []
+        rep = self.soup.select('a[class="text-bold flex-auto min-width-0"]')
+        for i in rep:
+            self.repo_list.append(i.get('href').lstrip('/'))
+        self.email = self.get_email()
         self.counters = self.soup.select('.Counter')
         self.repositories = self.counters[0].get_text().strip()
         self.stars = self.counters[2].get_text().strip()
         self.followers = self.counters[3].get_text().strip()
         self.following = self.counters[4].get_text().strip()
 
-        print(self.full_name, self.username, self.location, self.email, self.repo_list)
-        print(self.repositories, self.stars, self.followers, self.following)
-
+        self.display()
         sys.exit()
 
     def get_email(self):
@@ -237,9 +238,28 @@ class username_details(argparse.Action):
             repo = self.soup.select('span[class="repo"]')[0].get_text()
             email = get_latest_commit(repo, self.username)
         except IndexError:
-            email =  "Not enough information."
+            email = "Not enough information."
         return email
-        
+
+    def display(self):
+        print(colors.green, "-" * 80)
+        print(colors.blue, self.full_name, " ({})".format(self.username))
+        if len(self.bio) < 80:
+            print(colors.white, self.bio, '\n')
+        else:
+            print(colors.white, self.bio[:80], '\n', self.bio[80:])
+        print(colors.yellow, "Location :: ", self.location)
+        print(" Email :: ", self.email, '\n')
+        print(colors.cyan, "Repositories : {} \t Stars : {} \t Followers : {} "
+                           "\t Following : {} \n".format(self.repositories,
+                                                         self.stars,
+                                                         self.followers,
+                                                         self.following))
+        print(colors.orange, "Pinned/Popular Repositories")
+        for rep in self.repo_list:
+            print(colors.green, rep)
+        print(colors.green, "-" * 80)
+
 
 def stardox(repo_link, ver):
     try:
