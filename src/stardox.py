@@ -4,12 +4,12 @@ import os
 import colors
 import Logo
 import argparse
-import csv
 
 
 # Getting the name of the repository.
 def getting_header(soup_text):
     title = soup_text.title.get_text()
+
     start = title.find('/')
     stop = title.find(':')
     return title[start + 1: stop]
@@ -73,7 +73,7 @@ def get_latest_commit(repo_name, username):
         return "Not enough information."
 
 
-def email(repository_link):
+def email(repository_link,ver,save):
     try:
         import data
     except ImportError:
@@ -146,7 +146,7 @@ def email(repository_link):
     for arg in sys.argv[1:]:
         if arg == '-s' or arg == '--save':
             save_data = True
-            save(dat='emails')
+            save_info(dat='emails')
     if save_data is False:
         for e in range(len(data.email_list)):
             print(colors.white)
@@ -157,9 +157,10 @@ def email(repository_link):
           colors.green, end="\n\n")
 
 
-def save(dat='stardox'):
+def save_info(dat='stardox'):
     try:
         import data
+        import csv
     except ImportError:
         colors.error('Error importing data module')
         sys.exit(1)
@@ -182,7 +183,7 @@ def save(dat='stardox'):
             rows[row][0] = '@' + data.username_list[row]
             rows[row][1] = data.email_list[row]
 
-    file_path = args.path
+    file_path = args.save
     if file_path is not None and file_path.endswith('.csv'):
         pass
     else:
@@ -261,7 +262,7 @@ class username_details(argparse.Action):
         print(colors.green, "-" * 80)
 
 
-def stardox(repo_link, ver):
+def stardox(repo_link, ver, save):
     try:
         print_data = True
         save_data = False
@@ -394,7 +395,7 @@ def stardox(repo_link, ver):
                 pos += 1
 
         if save_data is True:
-            save()
+            save_info()
 
         print("\n", colors.green + "{0}".format("-") * 75,
               colors.green, end="\n\n")
@@ -409,15 +410,14 @@ if __name__ == '__main__':
 
         parser = argparse.ArgumentParser()
         parser.add_argument('-r', '--rURL', help=" Path to repository.",
-                            required=False)
+                            required=False, default=False)
         parser.add_argument('-v', '--verbose', help="Verbose",
                             required=False, default=True,
                             action='store_false')
         parser.add_argument('-s', '--save',
                             help="Save the doxed data in a csv file."
                                  " By default, saved at Desktop.",
-                            required=False, default="../Desktop",
-                            metavar='path', dest='path', nargs='?')
+                            required=False, default="../Desktop")
         parser.add_argument('-e', '--email', action='store_true',
                             help="Fetch only emails of stargazers.",
                             required=False, default=False)
@@ -432,23 +432,22 @@ if __name__ == '__main__':
             colors.error('Error importing requests module.')
 
         args = parser.parse_args()
+        repository_link = args.rURL
         verbose = args.verbose
-        if args.email is True:
-            exec = False
-            repository_link = format_url(args.rURL)
-            email(repository_link)
-        elif args.rURL and not args.email:
-            repository_link = args.rURL
-            exec = True
-        elif len(sys.argv) == 1 or (len(sys.argv) == 2 and not verbose):
+        issave = args.save
+        isemail = args.email
+
+
+        if args.rURL == False:
             repository_link = input(
                         "\033[37mEnter the repository address :: \x1b[0m")
-            exec = True
+            print(repository_link)
 
-        # Assuring that URL starts with https://
         repository_link = format_url(repository_link)
-        if exec is True:
-            stardox(repository_link, verbose)
+        if isemail:
+            email(repository_link,verbose,issave)
+        else:
+            stardox(repository_link,verbose,issave)
 
     except KeyboardInterrupt:
         print("\n\nYou're Great..!\nThanks for using :)")
