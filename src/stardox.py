@@ -199,6 +199,48 @@ def save(dat='stardox'):
         sys.exit()
 
 
+class username_details(argparse.Action):
+    def __call__(self, parser, namespace, values, option_string=None):
+        self.u = values
+        self.url = requests.get("https://github.com/" + self.u)
+        if self.url.status_code != requests.codes.ok:
+            print(colors.red, "Unable to find username. Please enter"
+                              "valid username and try again.")
+
+        self.full_name = self.username = self.bio = self.location = "No information provided."
+        self.soup = BeautifulSoup(self.url.text, features="lxml")
+        try:
+            self.full_name = self.soup.select('.vcard-fullname')[0].get_text()
+            self.username = self.soup.select('.vcard-username')[0].get_text()
+            self.bio = self.soup.select('.user-profile-bio')[0].get_text()
+            self.location = self.soup.select('.p-label')[0].get_text()
+            self.email = self.get_email()
+            self.repos = self.soup.select('span[class="repo"]')
+            self.repo_list = []
+            for tag in self.repos:
+                self.repo_list.append(tag.get_text())
+        except IndexError:
+            pass
+        self.counters = self.soup.select('.Counter')
+        self.repositories = self.counters[0].get_text().strip()
+        self.stars = self.counters[2].get_text().strip()
+        self.followers = self.counters[3].get_text().strip()
+        self.following = self.counters[4].get_text().strip()
+
+        print(self.full_name, self.username, self.location, self.email, self.repo_list)
+        print(self.repositories, self.stars, self.followers, self.following)
+
+        sys.exit()
+
+    def get_email(self):
+        try:
+            repo = self.soup.select('span[class="repo"]')[0].get_text()
+            email = get_latest_commit(repo, self.username)
+        except IndexError:
+            email =  "Not enough information."
+        return email
+        
+
 def stardox(repo_link, ver):
     try:
         print_data = True
@@ -359,6 +401,9 @@ if __name__ == '__main__':
         parser.add_argument('-e', '--email', action='store_true',
                             help="Fetch only emails of stargazers.",
                             required=False, default=False)
+        parser.add_argument('-u', '--username', type=str,
+                            help="Fetch a user's profile information.",
+                            action=username_details, required=False)
 
         try:
             import requests
