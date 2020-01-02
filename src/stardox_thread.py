@@ -6,7 +6,7 @@ import Logo
 import argparse
 import csv
 import threading
-
+import copy
 
 # Getting the name of the repository.
 def getting_header(soup_text):
@@ -44,7 +44,7 @@ def verify_url(page_data):
 
 
 # Function returning email of the stargazer
-def get_latest_commit(repo_name, username, name):
+def get_latest_commit(repo_name, username):
     email = ""
     commit_data = requests.get(
                 "https://github.com"
@@ -134,8 +134,7 @@ def fetch_details(print_data, username, name):
             except ImportError:
                 colors.error("Error importing structer module.")
                 sys.exit(1)
-    data.info_dicts.append(data.info_dict)   
-
+    data.info_dicts.append(copy.copy(data.info_dict))    
 def save():
     try:
         import data
@@ -148,12 +147,11 @@ def save():
     rows = [[0 for x in range(len(fields))] for user_i in range(len(data.username_list))]
     for row in range(len(data.username_list)):
         username = data.username_list[row]
-        info_dicts = data.info_dicts
-        found_data = False
-        for info_dict in info_dicts:
+        info_dicts = data.info_dicts        
+        print(info_dicts)
+        for info_dict in info_dicts:            
             if info_dict["username"] == username:
-                user_data = info_dict
-                found = True
+                user_data = info_dict                
                 break
             else:
                 continue                      
@@ -253,7 +251,8 @@ def stardox(repo_link, ver):
                     stargazer_link = None
             follow_names = soup2.findAll("h3", {"class": "follow-list-name"})
             for name in follow_names:
-                a_tag = name.findAll("a")                
+                a_tag = name.findAll("a")     
+                data.name_list.append(a_tag[0].get_text())           
                 username = a_tag[0].get("href")
                 data.username_list.append(username[1:])        
 
@@ -265,9 +264,14 @@ def stardox(repo_link, ver):
         # NOTE: This is where to implement threading
         lock = threading.Lock()
         t1 = threading.Thread(target=None, args=(lock,))                        
-        for username, name in zip(data.username_list, data.name_list):
-            fetch_details(print_data, username, name)                        
+        for (username, name) in zip(data.username_list, data.name_list):
+            fetch_details(print_data, username, name)          
             print(username)
+
+        print(data.name_list)
+        print
+
+
         if save_data is True:
             save()
 
@@ -302,18 +306,18 @@ if __name__ == '__main__':
 
         args = parser.parse_args()
         verbose = args.verbose
-        if args.rURL:
-            repository_link = args.rURL
-            exec = True
-        elif len(sys.argv) == 1 or (len(sys.argv) == 2 and not verbose):
+
+        if args.rURL != True:
             repository_link = input(
                         "\033[37mEnter the repository address :: \x1b[0m")
-            exec = True
+            print(repository_link)
+
+        repository_link = format_url(repository_link)
 
         # Assuring that URL starts with https://
         repository_link = format_url(repository_link)
-        if exec is True:
-            stardox(repository_link, verbose)
+        
+        stardox(repository_link, verbose)
 
     except KeyboardInterrupt:
         print("\n\nYou're Great..!\nThanks for using :)")
