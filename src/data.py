@@ -16,4 +16,6 @@ info_dict = {
     "username": None
 }
 
+
+# For storing individual user information
 info_dicts = list()

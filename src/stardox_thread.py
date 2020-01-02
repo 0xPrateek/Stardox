@@ -7,6 +7,7 @@ import argparse
 import csv
 import threading
 import copy
+import imp
 
 # Getting the name of the repository.
 def getting_header(soup_text):
@@ -75,9 +76,11 @@ def get_latest_commit(repo_name, username):
 
 
 # Fetching details of stargazers
-def fetch_details(print_data, username, name):           
+def fetch_details(lock, print_data, username, name):               
     try:
+        imp.acquire_lock()
         import data
+        imp.release_lock()
     except ImportError:
         colors.error('Error importing data module')
         sys.exit(1)         
@@ -135,6 +138,8 @@ def fetch_details(print_data, username, name):
                 colors.error("Error importing structer module.")
                 sys.exit(1)
     data.info_dicts.append(copy.copy(data.info_dict))    
+        
+
 def save():
     try:
         import data
@@ -262,14 +267,36 @@ def stardox(repo_link, ver):
         
         
         # NOTE: This is where to implement threading
+        '''
+        maxThreads = 8       
         lock = threading.Lock()
-        t1 = threading.Thread(target=None, args=(lock,))                        
-        for (username, name) in zip(data.username_list, data.name_list):
-            fetch_details(print_data, username, name)          
-            print(username)
+        my_threads = [threading.Thread(target=fetch_details, args=(lock,)) for t in range(maxThreads)]            
+        for t in my_threads:
+            t.start()
+        for t in my_threads:
+            if not t.isAlive():
+                # get results from thtead
+                t.handled = True
+        my_threads = [t for t in my_threads if not t.handled]                
+        '''
 
-        print(data.name_list)
-        print
+        def run_item(f, lock, print_data, username, name):
+            result_info = [threading.Event(), None]
+            def runit():
+                result_info[1] = f(lock, print_data, username, name)
+                result_info[0].set()
+            threading.Thread(target=runit).start()
+            return result_info
+
+        def gather_results(result_infos):
+            results = [] 
+            for i in range(len(result_infos)):
+                result_infos[i][0].wait()
+                results.append(result_infos[i][1])
+            return results
+
+        lock = threading.Lock()        
+        gather_results([run_item(fetch_details, lock, print_data, username, name) for (username, name) in zip(data.username_list, data.name_list)])
 
 
         if save_data is True:
