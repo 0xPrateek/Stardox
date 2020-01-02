@@ -4,12 +4,12 @@ import os
 import colors
 import Logo
 import argparse
-import csv
 
 
 # Getting the name of the repository.
 def getting_header(soup_text):
     title = soup_text.title.get_text()
+
     start = title.find('/')
     stop = title.find(':')
     return title[start + 1: stop]
@@ -73,25 +73,117 @@ def get_latest_commit(repo_name, username):
         return "Not enough information."
 
 
-def save():
+def email(repository_link,ver,save):
     try:
         import data
     except ImportError:
         colors.error('Error importing data module')
         sys.exit(1)
 
-    fields = ['Username', 'Repositories', 'Stars', 'Followers', 'Following',
-              'Email']
-    rows = [[0 for x in range(6)] for y in range(len(data.username_list))]
-    for row in range(len(data.username_list)):
-        rows[row][0] = '@' + data.username_list[row]
-        rows[row][1] = data.repo_list[row].strip()
-        rows[row][2] = data.star_list[row].strip()
-        rows[row][3] = data.followers_list[row].strip()
-        rows[row][4] = data.following_list[row].strip()
-        rows[row][5] = data.email_list[row]
+    try:
+        # Getting HTML page of repository
+        html = requests.get(repository_link, timeout=8).text
+    except (requests.exceptions.RequestException,
+            requests.exceptions.HTTPError):
+        colors.error(
+            "Enter the repositories url in given format "
+            "[ https://github.com/username/repository_name ]")
+        sys.exit(1)
+    # Checking if the url given is of a repository or not.
+    result = verify_url(html)
+    if result:
+        colors.success("Got the repository data ", verbose)
+    else:
+        colors.error("Please enter the correct URL ")
+        sys.exit(0)
+    # Parsing the html data using BeautifulSoup
+    soup1 = BeautifulSoup(html, "lxml")
+    title = getting_header(soup1)  # Getting the title of the page
+    data.header = title  # Storing title of the page as Project Title
+    colors.success("Repository Title : " + title, verbose)
+    colors.process("Doxing started ...\n", verbose)
+    stargazer_link = repository_link + "/stargazers"
+    while (stargazer_link is not None):
+        stargazer_html = requests.get(stargazer_link).text
+        soup2 = BeautifulSoup(stargazer_html, "lxml")
+        a_next = soup2.findAll("a")
+        for a in a_next:
+            if a.get_text() == "Next":
+                stargazer_link = a.get('href')
+                break
+            else:
+                stargazer_link = None
+        follow_names = soup2.findAll("h3", {"class": "follow-list-name"})
+        for name in follow_names:
+            a_tag = name.findAll("a")
+            username = a_tag[0].get("href")
+            data.username_list.append(username[1:])
+    count = 1
+    pos = 0
+    while(count <= len(data.username_list)):
+        repo_data = requests.get(
+            "https://github.com/{}?tab=repositories&type=source"
+            .format(data.username_list[pos])).text
+        repo_soup = BeautifulSoup(repo_data, "lxml")
+        a_tags = repo_soup.findAll("a")
+        repositories_list = []
+        for a_tag in a_tags:
+            if a_tag.get("itemprop") == "name codeRepository":
+                repositories_list.append(a_tag.get_text().strip())
+        if len(repositories_list) > 0:
+            email = get_latest_commit(
+                    repositories_list[0],
+                    data.username_list[pos])  # Getting stargazer's email
+            data.email_list.append(str(email))
+        else:
+            data.email_list.append("Not enough information.")
+        count += 1
+        pos += 1
 
-    file_path = args.path
+    # Printing or saving the emails
+    print(colors.red + "{0}".format("-") * 75, colors.green, end="\n\n")
+    save_data = False
+    for arg in sys.argv[1:]:
+        if arg == '-s' or arg == '--save':
+            save_data = True
+            save_info(dat='emails')
+    if save_data is False:
+        for e in range(len(data.email_list)):
+            print(colors.white)
+            print(data.username_list[e], (30-len(data.username_list[e]))*' ',
+                  colors.green, '::',
+                  colors.white, data.email_list[e])
+    print("\n", colors.green + "{0}".format("-") * 75,
+          colors.green, end="\n\n")
+
+
+def save_info(dat='stardox'):
+    try:
+        import data
+        import csv
+    except ImportError:
+        colors.error('Error importing data module')
+        sys.exit(1)
+
+    if dat == 'stardox':
+        fields = ['Username', 'Repositories', 'Stars', 'Followers',
+                  'Following', 'Email']
+        rows = [[0 for x in range(6)] for y in range(len(data.username_list))]
+        for row in range(len(data.username_list)):
+            rows[row][0] = '@' + data.username_list[row]
+            rows[row][1] = data.repo_list[row].strip()
+            rows[row][2] = data.star_list[row].strip()
+            rows[row][3] = data.followers_list[row].strip()
+            rows[row][4] = data.following_list[row].strip()
+            rows[row][5] = data.email_list[row]
+    elif dat == 'emails':
+        fields = ['Username', 'Email']
+        rows = [[0 for x in range(2)] for y in range(len(data.username_list))]
+        for row in range(len(data.username_list)):
+            rows[row][0] = '@' + data.username_list[row]
+            rows[row][1] = data.email_list[row]
+
+    file_path = args.save
     if file_path is not None and file_path.endswith('.csv'):
         pass
     else:
@@ -108,7 +200,7 @@ def save():
         sys.exit()
 
 
-def stardox(repo_link, ver):
+def stardox(repo_link, ver, save):
     try:
         print_data = True
         save_data = False
@@ -241,7 +333,7 @@ def stardox(repo_link, ver):
                 pos += 1
 
         if save_data is True:
-            save()
+            save_info()
 
         print("\n", colors.green + "{0}".format("-") * 75,
               colors.green, end="\n\n")
@@ -256,15 +348,17 @@ if __name__ == '__main__':
 
         parser = argparse.ArgumentParser()
         parser.add_argument('-r', '--rURL', help=" Path to repository.",
-                            required=False)
+                            required=False, default=False)
         parser.add_argument('-v', '--verbose', help="Verbose",
                             required=False, default=True,
                             action='store_false')
         parser.add_argument('-s', '--save',
                             help="Save the doxed data in a csv file."
                                  " By default, saved at Desktop.",
-                            required=False, default="../Desktop",
-                            metavar='path', dest='path', nargs='?')
+                            required=False, default="../Desktop")
+        parser.add_argument('-e', '--email', action='store_true',
+                            help="Fetch only emails of stargazers.",
+                            required=False, default=False)
 
         try:
             import requests
@@ -273,19 +367,22 @@ if __name__ == '__main__':
             colors.error('Error importing requests module.')
 
         args = parser.parse_args()
+        repository_link = args.rURL
         verbose = args.verbose
-        if args.rURL:
-            repository_link = args.rURL
-            exec = True
-        elif len(sys.argv) == 1 or (len(sys.argv) == 2 and not verbose):
+        issave = args.save
+        isemail = args.email
+
+
+        if args.rURL == False:
             repository_link = input(
                         "\033[37mEnter the repository address :: \x1b[0m")
-            exec = True
+            print(repository_link)
 
-        # Assuring that URL starts with https://
         repository_link = format_url(repository_link)
-        if exec is True:
-            stardox(repository_link, verbose)
+        if isemail:
+            email(repository_link,verbose,issave)
+        else:
+            stardox(repository_link,verbose,issave)
 
     except KeyboardInterrupt:
         print("\n\nYou're Great..!\nThanks for using :)")

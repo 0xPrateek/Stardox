@@ -61,15 +61,16 @@ P.S: Many new things will be added soon.
     b)  **Without Command line arguments**<br/>
      `    python3 stardox.py`<br/>
   #### Usage :
-     usage: stardox.py [-h] [-r RURL] [-v] [-s [path]]
+     usage: stardox.py [-h] [-r RURL] [-v] [-s [path]] [-e]
 
   ##### optional arguments:
      -h, --help            show this help message and exit
      -r RURL, --rURL RURL  Path to repository.
      -v, --verbose         Verbose
      -s [path], --save [path]
-                        Save the doxed data in a csv file. By default, saved
-                        at Desktop.
+                           Save the doxed data in a csv file. By default, saved
+                           at Desktop.
+     -e, --email           Fetch only emails of stargazers.
 
 
 ### Contributing
