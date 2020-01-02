@@ -4,10 +4,7 @@ import os
 import colors
 import Logo
 import argparse
-import csv
 import threading
-import copy
-import imp
 
 # Getting the name of the repository.
 def getting_header(soup_text):
@@ -74,16 +71,25 @@ def get_latest_commit(repo_name, username):
     else:
         return "Not enough information."
 
-
 # Fetching details of stargazers
-def fetch_details(lock, print_data, username, name):               
-    try:
-        imp.acquire_lock()
-        import data
-        imp.release_lock()
+def fetch_details(print_data, username, name):               
+    try:        
+        # No import locking required, append is a thread-safe operation         
+        import data        
     except ImportError:
         colors.error('Error importing data module')
         sys.exit(1)         
+
+    # For storing the individual user data
+    info_dict = {
+        "stars": None,
+        "repos": None,
+        "followers": None,
+        "email": None,
+        "following": None,
+        "name": None,
+        "username": None
+    }
 
     starer_url = "https://github.com/" + username
     user_html = requests.get(starer_url).text
@@ -101,11 +107,11 @@ def fetch_details(lock, print_data, username, name):
         email = get_latest_commit(
                 repositories_list[0],
                 username)  # Getting stargazer's email        
-        data.info_dict["email"] = str(email)
+        info_dict["email"] = str(email)
     else:
-        data.info_dict["email"] = "Not enough information."
-    data.info_dict["name"] = name
-    data.info_dict["username"] = username
+        info_dict["email"] = "Not enough information."
+    info_dict["name"] = name
+    info_dict["username"] = username
     if(user_html is not None):
         items = soup3.findAll("a", {"class": "UnderlineNav-item"})
         for item in items[1:]:
@@ -113,32 +119,32 @@ def fetch_details(lock, print_data, username, name):
             if item.get("href").endswith("repositories") is True:
                 a_tag = item.findAll("span")
                 repo_count = a_tag[0].get_text()                
-                data.info_dict["repos"] = repo_count
+                info_dict["repos"] = repo_count
             # Getting total stars by the stargazer
             elif item.get("href").endswith("stars") is True:
                 a_tag = item.findAll("span")
                 star_count = a_tag[0].get_text()                
-                data.info_dict["stars"] = star_count
+                info_dict["stars"] = star_count
             # Getting total followers of the stargazers
             elif item.get("href").endswith("followers") is True:
                 a_tag = item.findAll("span")
                 followers_count = a_tag[0].get_text()                
-                data.info_dict["followers"] = followers_count
+                info_dict["followers"] = followers_count
             # Getting following list of the stargazers
             elif item.get("href").endswith("following") is True:
                 a_tag = item.findAll("span")
                 following_count = a_tag[0].get_text()                
-                data.info_dict["following"] = following_count                
+                info_dict["following"] = following_count                
         if print_data is True:
             try:
                 import structer
                 # Plotting the tree structer of the fetched details
-                structer.plotdata(data.info_dict)
+                structer.plotdata(info_dict)
             except ImportError:
                 colors.error("Error importing structer module.")
                 sys.exit(1)
-    data.info_dicts.append(copy.copy(data.info_dict))    
-        
+    data.info_dicts.append(info_dict)
+    
 
 def save():
     try:
@@ -265,10 +271,10 @@ def stardox(repo_link, ver):
         
             
         # Threading
-        def run_item(f, lock, print_data, username, name):
+        def run_item(f, print_data, username, name):
             result_info = [threading.Event(), None]
             def runit():
-                result_info[1] = f(lock, print_data, username, name)
+                result_info[1] = f(print_data, username, name)
                 result_info[0].set()
             threading.Thread(target=runit).start()
             return result_info
@@ -279,11 +285,15 @@ def stardox(repo_link, ver):
                 result_infos[i][0].wait()
                 results.append(result_infos[i][1])
             return results
-
-        lock = threading.Lock()        
-        gather_results([run_item(fetch_details, lock, print_data, username, name) for (username, name) in zip(data.username_list, data.name_list)])
-
-
+        
+        maxThreads = 64
+        
+        # Split into manageable sections to thread, default 8 threads max at a time
+        split_users = [data.username_list[i * maxThreads:(i + 1) * maxThreads] for i in range((len(data.username_list) + maxThreads - 1) // maxThreads )]  
+        split_names = [data.name_list[i * maxThreads:(i + 1) * maxThreads] for i in range((len(data.name_list) + maxThreads - 1) // maxThreads )]  
+        for (username_list, name_list) in zip(split_users, split_names):
+            gather_results([run_item(fetch_details, print_data, username, name) for (username, name) in zip(username_list, name_list)])
+        
         if save_data is True:
             save()
 
@@ -327,7 +337,7 @@ if __name__ == '__main__':
         repository_link = format_url(repository_link)
 
         # Assuring that URL starts with https://
-        repository_link = format_url(repository_link)
+        repository_link = format_url(repository_link)        
         
         stardox(repository_link, verbose)
 

@@ -11,9 +11,9 @@ def plotdata(info_dict):
 \033[1;37m|  |--\033[1;32mTotal Followers   :: \033[1;37m{}
 \033[1;37m|  |--\033[1;32mTotal Following   :: \033[1;37m{}
 \033[1;37m|  |--\033[1;32mUser Email        :: \033[1;37m{}
-\033[1;37m|'''.format("|", data.info_dict["name"], data.info_dict["username"],
-                    data.info_dict["repos"].strip(),
-                    data.info_dict["stars"].strip(),
-                    data.info_dict["followers"].strip(),
-                    data.info_dict["following"].strip(),
-                    data.info_dict["email"].strip()))
+\033[1;37m|'''.format("|", info_dict["name"], info_dict["username"],
+                    info_dict["repos"].strip(),
+                    info_dict["stars"].strip(),
+                    info_dict["followers"].strip(),
+                    info_dict["following"].strip(),
+                    info_dict["email"].strip()))
