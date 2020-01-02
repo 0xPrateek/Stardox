@@ -152,8 +152,7 @@ def save():
     rows = [[0 for x in range(len(fields))] for user_i in range(len(data.username_list))]
     for row in range(len(data.username_list)):
         username = data.username_list[row]
-        info_dicts = data.info_dicts        
-        print(info_dicts)
+        info_dicts = data.info_dicts                
         for info_dict in info_dicts:            
             if info_dict["username"] == username:
                 user_data = info_dict                
@@ -264,22 +263,8 @@ def stardox(repo_link, ver):
         colors.process("Doxing started ...\n", verbose)
         print(colors.red + "{0}".format("-") * 75, colors.green, end="\n\n")
         
-        
-        
-        # NOTE: This is where to implement threading
-        '''
-        maxThreads = 8       
-        lock = threading.Lock()
-        my_threads = [threading.Thread(target=fetch_details, args=(lock,)) for t in range(maxThreads)]            
-        for t in my_threads:
-            t.start()
-        for t in my_threads:
-            if not t.isAlive():
-                # get results from thtead
-                t.handled = True
-        my_threads = [t for t in my_threads if not t.handled]                
-        '''
-
+            
+        # Threading
         def run_item(f, lock, print_data, username, name):
             result_info = [threading.Event(), None]
             def runit():
