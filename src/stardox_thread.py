@@ -7,6 +7,7 @@ import argparse
 import csv
 import threading
 
+
 # Getting the name of the repository.
 def getting_header(soup_text):
     title = soup_text.title.get_text()
@@ -43,7 +44,7 @@ def verify_url(page_data):
 
 
 # Function returning email of the stargazer
-def get_latest_commit(repo_name, username):
+def get_latest_commit(repo_name, username, name):
     email = ""
     commit_data = requests.get(
                 "https://github.com"
@@ -74,7 +75,7 @@ def get_latest_commit(repo_name, username):
 
 
 # Fetching details of stargazers
-def fetch_details(lock, print_data, username):           
+def fetch_details(print_data, username, name):           
     try:
         import data
     except ImportError:
@@ -99,7 +100,9 @@ def fetch_details(lock, print_data, username):
                 username)  # Getting stargazer's email        
         data.info_dict["email"] = str(email)
     else:
-        data.email_list.append("Not enough information.")
+        data.info_dict["email"] = "Not enough information."
+    data.info_dict["name"] = name
+    data.info_dict["username"] = username
     if(user_html is not None):
         items = soup3.findAll("a", {"class": "UnderlineNav-item"})
         for item in items[1:]:
@@ -122,19 +125,16 @@ def fetch_details(lock, print_data, username):
             elif item.get("href").endswith("following") is True:
                 a_tag = item.findAll("span")
                 following_count = a_tag[0].get_text()                
-                data.info_dict["following"] = following_count
-        print(username)
-        data.info_dict["name"] = username
-        data.info_dict["username"] = username
+                data.info_dict["following"] = following_count                
         if print_data is True:
             try:
                 import structer
                 # Plotting the tree structer of the fetched details
-                structer.plotdata(len(data.username_list))
+                structer.plotdata(data.info_dict)
             except ImportError:
                 colors.error("Error importing structer module.")
                 sys.exit(1)
-        
+    data.info_dicts.append(data.info_dict)   
 
 def save():
     try:
@@ -145,15 +145,29 @@ def save():
 
     fields = ['Username', 'Repositories', 'Stars', 'Followers', 'Following',
               'Email']
-    rows = [[0 for x in range(6)] for y in range(len(data.username_list))]
+    rows = [[0 for x in range(len(fields))] for user_i in range(len(data.username_list))]
     for row in range(len(data.username_list)):
-        rows[row][0] = '@' + data.username_list[row]
-        rows[row][1] = data.repo_list[row].strip()
-        rows[row][2] = data.star_list[row].strip()
-        rows[row][3] = data.followers_list[row].strip()
-        rows[row][4] = data.following_list[row].strip()
-        rows[row][5] = data.email_list[row]
-
+        username = data.username_list[row]
+        info_dicts = data.info_dicts
+        found_data = False
+        for info_dict in info_dicts:
+            if info_dict["username"] == username:
+                user_data = info_dict
+                found = True
+                break
+            else:
+                continue                      
+        try:
+            rows[row][0] = '@' + data.username_list[row]
+            rows[row][1] = user_data["repos"].strip()
+            rows[row][2] = user_data["stars"].strip()
+            rows[row][3] = user_data["followers"].strip()
+            rows[row][4] = user_data["following"].strip()
+            rows[row][5] = user_data["email"].strip()
+        except(NameError):
+            colors.error("Invalid Username")
+            sys.exit()
+            
     file_path = args.path
     if file_path is not None and file_path.endswith('.csv'):
         pass
@@ -239,8 +253,7 @@ def stardox(repo_link, ver):
                     stargazer_link = None
             follow_names = soup2.findAll("h3", {"class": "follow-list-name"})
             for name in follow_names:
-                a_tag = name.findAll("a")
-                data.name_list.append(a_tag[0].get_text())
+                a_tag = name.findAll("a")                
                 username = a_tag[0].get("href")
                 data.username_list.append(username[1:])        
 
@@ -252,8 +265,8 @@ def stardox(repo_link, ver):
         # NOTE: This is where to implement threading
         lock = threading.Lock()
         t1 = threading.Thread(target=None, args=(lock,))                        
-        for username in data.username_list:
-            fetch_details(lock, print_data, username)                        
+        for username, name in zip(data.username_list, data.name_list):
+            fetch_details(print_data, username, name)                        
             print(username)
         if save_data is True:
             save()

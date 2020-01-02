@@ -1,7 +1,7 @@
 import data
 
 
-def plotdata(stars):
+def plotdata(info_dict):
     print(
         '''\033[1;37m{}
 \033[1;37m|-----\033[1;32m{} (@{})
