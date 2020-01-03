@@ -5,7 +5,6 @@ import colors
 import Logo
 import argparse
 
-
 # Getting the name of the repository.
 def getting_header(soup_text):
     title = soup_text.title.get_text()
