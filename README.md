@@ -61,7 +61,7 @@ P.S: Many new things will be added soon.
     b)  **Without Command line arguments**<br/>
      `    python3 stardox.py`<br/>
   #### Usage :
-     usage: stardox.py [-h] [-r RURL] [-v] [-s SAVE] [-e] [-u USERNAME]
+     usage: stardox.py [-h] [-r RURL] [-v] [-s [path]] [-u USERNAME]
 
   ##### optional arguments:
      -h, --help            show this help message and exit
