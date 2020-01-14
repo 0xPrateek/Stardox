@@ -253,18 +253,22 @@ def stardox(repo_link, ver, max_threads):
             if(string.endswith("/members")):  # Finding total members
                 fork_value = (a_tag.get_text()).strip()
                 colors.success("Total Forks : " + fork_value, verbose)
-            if(string.endswith("/pulls")):                # Finding Total Pull Requests
-                pull_value=(a_tag.get_text()).strip()
-                colors.success("Total Pull Requests : "+pull_value.replace('Pull requests',''),verbose)
-            if(string.endswith("/branches")):                # Finding Total branches
-                branch_value=(a_tag.get_text()).strip()
-                colors.success("Total Branches : "+branch_value.replace('branches',''),verbose)
-            if(string.endswith("/commits/master")):                # Finding Total commits
-                commits_value=(a_tag.get_text()).strip()
-                colors.success("Total Commits : "+commits_value.replace('commits',''),verbose)
-            if(string.endswith("/graphs/contributors")):                # Finding Total contributors
-                contributors_value=(a_tag.get_text()).strip()
-                colors.success("Total Contributors : "+contributors_value.replace('contributors',''),verbose)
+            if(string.endswith("/pulls")):    # Finding Total Pull Requests
+                pull = (a_tag.get_text()).strip()
+                pull_value = pull.replace('Pull requests','')
+                colors.success("Pull Requests : "+pull_value, verbose)
+            if(string.endswith("/branches")):  # Finding Total branches
+                branch = (a_tag.get_text()).strip()
+                branch_value = branch.replace('branches','')
+                colors.success("Branches : "+branch_value, verbose)
+            if(string.endswith("/commits/master")): # Finding Total commits
+                commits = (a_tag.get_text()).strip()
+                commits_value = commits.replace('commits','')
+                colors.success("Total Commits : "+commits_value, verbose)
+            if(string.endswith("/graphs/contributors")): # Finding Total contributors
+                contri = (a_tag.get_text()).strip()
+                contri_value = contri.replace('contributors','')
+                colors.success("Contributors : "+contri_value, verbose)
                 break
         stargazer_link = repository_link + "/stargazers"
         colors.process("Fetching stargazers list", verbose)
