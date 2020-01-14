@@ -255,16 +255,16 @@ def stardox(repo_link, ver, max_threads):
                 colors.success("Total Forks : " + fork_value, verbose)
             if(string.endswith("/pulls")):                # Finding Total Pull Requests
                 pull_value=(a_tag.get_text()).strip()
-                colors.success("Total Pull Requests : "+pull_value,verbose)
+                colors.success("Total Pull Requests : "+pull_value.replace('Pull requests',''),verbose)
             if(string.endswith("/branches")):                # Finding Total branches
                 branch_value=(a_tag.get_text()).strip()
-                colors.success("Total Branches : "+branch_value,verbose)
+                colors.success("Total Branches : "+branch_value.replace('branches',''),verbose)
             if(string.endswith("/commits/master")):                # Finding Total commits
                 commits_value=(a_tag.get_text()).strip()
-                colors.success("Total Commits : "+commits_value,verbose)
+                colors.success("Total Commits : "+commits_value.replace('commits',''),verbose)
             if(string.endswith("/graphs/contributors")):                # Finding Total contributors
                 contributors_value=(a_tag.get_text()).strip()
-                colors.success("Total Contributors : "+contributors_value,verbose)
+                colors.success("Total Contributors : "+contributors_value.replace('contributors',''),verbose)
                 break
         stargazer_link = repository_link + "/stargazers"
         colors.process("Fetching stargazers list", verbose)
