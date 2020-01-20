@@ -238,7 +238,44 @@ def stardox(repo_link, ver, max_threads):
         title = getting_header(soup1)  # Getting the title of the page
         data.header = title  # Storing title of the page as Project Title
         colors.success("Repository Title : " + title, verbose)
+
         star_value = watch_value = fork_value = 0
+
+        head,sep,tail = repository_link.partition('https://github.com/')
+        username_git,sep1,tail1 = tail.partition('/')
+        colors.success("\n\nUSER PROFILE : @" + username_git, verbose)
+
+        link =''.join(repository_link.rpartition('/')[:1])
+        html2 = requests.get(link).text
+        soup2 = BeautifulSoup(html2, "lxml")
+
+        a_tags = soup2.findAll("a")
+        #colors.success(a_tags, verbose)
+        for a_tag in a_tags:  # Finding total stargazers of the repository
+            string = a_tag.get("href")
+            #colors.success(string, verbose)
+
+            if(string.endswith(username_git+"?tab=repositories")):  # Finding total watchers
+                repositories = (a_tag.get_text()).strip()
+                repositories = repositories.replace('Repositories', '')
+                colors.success(f" @{username_git} Repositories : {repositories.strip()}",verbose)
+            
+            if(string.endswith(username_git+"?tab=following")):  # Finding total watchers
+                following = (a_tag.get_text()).strip()
+                following = following.replace('Following', '')
+                colors.success(f" @{username_git} Following : {following.strip()}\n\n",verbose)
+            
+            if(string.endswith(username_git+"?tab=stars")):                # Finding Total contributors
+                stars=(a_tag.get_text()).strip()
+                stars = stars.replace('Stars', '')
+                colors.success(f" @{username_git} Stars : {stars.strip()}",verbose)
+            
+            if(string.endswith(username_git+"?tab=followers")):                # Finding Total contributors
+                followers=(a_tag.get_text()).strip()
+                followers = followers.replace('Followers', '')
+                colors.success(f" @{username_git} Followers : {followers.strip()}",verbose)
+                
+
 
         # Finding all the 'a' tags in response html data.
         a_tags = soup1.findAll("a")
@@ -247,28 +284,34 @@ def stardox(repo_link, ver, max_threads):
             if(string.endswith("/watchers")):  # Finding total watchers
                 watch_value = (a_tag.get_text()).strip()
                 colors.success("Total watchers : " + watch_value, verbose)
+
             if(string.endswith("/stargazers")):  # Finding total stargazers
                 star_value = (a_tag.get_text()).strip()
                 colors.success("Total stargazers : " + star_value, verbose)
+
             if(string.endswith("/members")):  # Finding total members
                 fork_value = (a_tag.get_text()).strip()
                 colors.success("Total Forks : " + fork_value, verbose)
-            if(string.endswith("/pulls")):    # Finding Total Pull Requests
-                pull = (a_tag.get_text()).strip()
-                pull_value = pull.replace('Pull requests','')
-                colors.success("Pull Requests : "+pull_value, verbose)
-            if(string.endswith("/branches")):  # Finding Total branches
-                branch = (a_tag.get_text()).strip()
-                branch_value = branch.replace('branches','')
-                colors.success("Branches : "+branch_value, verbose)
-            if(string.endswith("/commits/master")): # Finding Total commits
-                commits = (a_tag.get_text()).strip()
-                commits_value = commits.replace('commits','')
-                colors.success("Total Commits : "+commits_value, verbose)
-            if(string.endswith("/graphs/contributors")): # Finding Total contributors
-                contri = (a_tag.get_text()).strip()
-                contri_value = contri.replace('contributors','')
-                colors.success("Contributors : "+contri_value, verbose)
+
+            if(string.endswith("/pulls")):                # Finding Total Pull Requests
+                pull_value=(a_tag.get_text()).strip()
+                pull_value = pull_value.replace('Pull requests', '')
+                colors.success(f"Total Pull Requests : {pull_value.strip()}",verbose)
+
+            if(string.endswith("/branches")):                # Finding Total branches
+                branch_value=(a_tag.get_text()).strip()
+                branch_value = branch_value.replace('branches', '')
+                colors.success(f"Total Branches : {branch_value.strip()}",verbose)
+
+            if(string.endswith("/master")):                # Finding Total commits
+                commits_value=(a_tag.get_text()).strip()
+                commits_value = commits_value.replace('commits', '')
+                colors.success(f"Total Commits : {commits_value.strip()}",verbose)
+
+            if(string.endswith("/graphs/contributors")):                # Finding Total contributors
+                contributors_value=(a_tag.get_text()).strip()
+                contributors_value = contributors_value.replace('contributors', '')
+                colors.success(f"Total Contributors : {contributors_value.strip()}\n\n",verbose)
                 break
         stargazer_link = repository_link + "/stargazers"
         colors.process("Fetching stargazers list", verbose)
