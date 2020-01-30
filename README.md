@@ -72,6 +72,24 @@ P.S: Many new things will be added soon.
                            at Desktop.
      -e, --email           Fetch only emails of stargazers.
 
+### Docker
+
+1. Clone repo:
+```sh
+https://github.com/0xprateek/stardox
+```
+
+1. Build:
+```sh
+docker build . -t stardox
+```
+
+2. Run
+```sh
+docker run -v $(pwd):/root/Desktop -it stardox
+```
+
+- `-v` argument will save the output in the current folder in case you use `-s` arg to save output.
 
 ### Contributing
 Any and all contributions, issues, features and tips are welcome.
