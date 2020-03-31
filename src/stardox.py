@@ -323,7 +323,7 @@ if __name__ == '__main__':
         parser.add_argument('-s', '--save',
                             help="Save the doxed data in a csv file."
                                  " By default, saved at Desktop.",
-                            required=False, default="../Desktop",
+                            required=False, default=os.path.expanduser('~') +'/Desktop',
                             metavar='path', dest='path', nargs='?')
 
         try:
