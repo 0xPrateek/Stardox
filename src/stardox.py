@@ -298,25 +298,24 @@ def stardox(repo_link, ver, save):
             else:
                 data.email_list.append("Not enough information.")
             if(user_html is not None):
-                items = soup3.findAll("a", {"class": "UnderlineNav-item"})
+                items = soup3.findAll("a", {"class": "no-underline"})
                 for item in items[1:]:
                     # Getting total repositories of the stargazer
-                    if item.get("href").endswith("repositories") is True:
-                        a_tag = item.findAll("span")
-                        repo_count = a_tag[0].get_text()
-                        data.repo_list.append(repo_count)
+
+                    data.repo_list.append(len(repositories_list))
+
                     # Getting total stars by the stargazer
-                    elif item.get("href").endswith("stars") is True:
+                    if item.get("href").endswith("stars") is True:
                         a_tag = item.findAll("span")
                         star_count = a_tag[0].get_text()
                         data.star_list.append(star_count)
                     # Getting total followers of the stargazers
-                    elif item.get("href").endswith("followers") is True:
+                    if item.get("href").endswith("followers") is True:
                         a_tag = item.findAll("span")
                         followers_count = a_tag[0].get_text()
                         data.followers_list.append(followers_count)
                     # Getting following list of the stargazers
-                    elif item.get("href").endswith("following") is True:
+                    if item.get("href").endswith("following") is True:
                         a_tag = item.findAll("span")
                         following_count = a_tag[0].get_text()
                         data.following_list.append(following_count)
