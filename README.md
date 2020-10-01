@@ -63,4 +63,5 @@ Any and all contributions, issues, features and tips are welcome.
 
 ### License
 **Stardox** is licence under [GPL v3.0 license](https://www.gnu.org/licenses/gpl-3.0.en.html)
-vivek kumar mishra
+
+hello geeks, you should change pattern as new editions like random colour inverstion and much more.
