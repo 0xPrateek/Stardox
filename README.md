@@ -19,6 +19,12 @@
   <a href = "https://blackarch.org/recon.html"><img src = "https://raw.githubusercontent.com/0xPrateek/Stardox/master/Logo/blackarch.png"></a>
 
   </br>
+  
+ ## Sponsor
+ 
+<a href="https://oxylabs.io">
+<img width="400" alt="Oxylabs: Innovative Proxy Service to Gather Data at Scale" src="https://user-images.githubusercontent.com/8784712/155142247-17264699-1bc8-4b52-8236-8b9ef7b365e2.png" />
+</a>
 </p>
 
 ## About [Stardox](https://github.com/0xprateek/stardox)
@@ -72,9 +78,15 @@ P.S: Many new things will be added soon.
                            at Desktop.
      -e, --email           Fetch only emails of stargazers.
 
-
 ### Contributing
 Any and all contributions, issues, features and tips are welcome.
 
 ### License
 **Stardox** is licence under [GPL v3.0 license](https://www.gnu.org/licenses/gpl-3.0.en.html)
+
+### Sponsors
+If my code has helped you, Please consider [sponsoring](https://paypal.me/0xprateek?country.x=IN&locale.x=en_GB) me. I'd like to thank these awesome companies for sponsoring me:
+
+<a href="https://oxylabs.io">
+<img width="300" alt="Oxylabs: Innovative Proxy Service to Gather Data at Scale" src="https://user-images.githubusercontent.com/8784712/155142247-17264699-1bc8-4b52-8236-8b9ef7b365e2.png" />
+</a> 
