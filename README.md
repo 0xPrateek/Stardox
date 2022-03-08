@@ -22,7 +22,7 @@
   
  ## Sponsor
  
-<a href="https://oxylabs.io">
+<a href="https://oxylabs.io/?utm_source=0xPrateek&utm_medium=cpc&utm_campaign=0xPrateek_github_partner&adgroupid=202203034">
 <img width="400" alt="Oxylabs: Innovative Proxy Service to Gather Data at Scale" src="https://user-images.githubusercontent.com/8784712/155142247-17264699-1bc8-4b52-8236-8b9ef7b365e2.png" />
 </a>
 </p>
@@ -87,6 +87,6 @@ Any and all contributions, issues, features and tips are welcome.
 ### Sponsors
 If my code has helped you, Please consider [sponsoring](https://paypal.me/0xprateek?country.x=IN&locale.x=en_GB) me. I'd like to thank these awesome companies for sponsoring me:
 
-<a href="https://oxylabs.io">
+<a href="https://oxylabs.io/?utm_source=0xPrateek&utm_medium=cpc&utm_campaign=0xPrateek_github_partner&adgroupid=202203034">
 <img width="300" alt="Oxylabs: Innovative Proxy Service to Gather Data at Scale" src="https://user-images.githubusercontent.com/8784712/155142247-17264699-1bc8-4b52-8236-8b9ef7b365e2.png" />
 </a> 
