@@ -21,16 +21,21 @@
   </br>
   
 ---
-
 ## Sponsor
 
-<a href="https://www.swiftproxy.net/?ref=0xprateek">
-  <img width="400" alt="Swiftproxy provides a range of proxy solutions including residential proxy and static residential proxy." src="./Logo/swiftproxy.png" />
-</a>
+<div align="left" style="display: flex; justify-content: center; gap: 30px; align-items: center;">
 
-<a href="https://oxylabs.io/?utm_source=0xPrateek&utm_medium=cpc&utm_campaign=0xPrateek_github_partner&adgroupid=202203034">
-  <img width="400" alt="Oxylabs: Innovative Proxy Service to Gather Data at Scale" src="https://user-images.githubusercontent.com/8784712/155142247-17264699-1bc8-4b52-8236-8b9ef7b365e2.png" />
-</a>
+  <a href="https://www.swiftproxy.net/?ref=0xprateek" style="margin: 0;">
+    <img src="https://raw.githubusercontent.com/0xPrateek/Stardox/refs/heads/feature/sponsor-swiftproxy/Logo/swifproxy.png" height="100" alt="Swiftproxy" />
+  </a>
+
+  <a href="https://oxylabs.io/?utm_source=0xPrateek&utm_medium=cpc&utm_campaign=0xPrateek_github_partner&adgroupid=202203034" style="margin: 0;">
+    <img src="https://user-images.githubusercontent.com/8784712/155142247-17264699-1bc8-4b52-8236-8b9ef7b365e2.png" height="100" alt="Oxylabs" />
+  </a>
+
+</div>
+
+
 
 ---
 
@@ -100,13 +105,18 @@ Any and all contributions, issues, features and tips are welcome.
 **Stardox** is licence under [GPL v3.0 license](https://www.gnu.org/licenses/gpl-3.0.en.html)
 
 ### Sponsors
-If my code has helped you, Please consider [sponsoring](https://paypal.me/0xprateek?country.x=IN&locale.x=en_GB) me. I'd like to thank these awesome companies for sponsoring me:
+If my code has helped you, Please consider [sponsoring](https://paypal.me/0xprateek?country.x=IN&locale.x=en_GB) me.<br>
+I'd like to thank these awesome companies for sponsoring me.
 
-</p>
-<a href="https://www.swiftproxy.net/?ref=0xprateek">
-<img width="400" alt="Swiftproxy provides a range of proxy solutions including residential proxy and static residential proxy." src="./Logo/swiftproxy.png" />
-</a>
-</p>
-<a href="https://oxylabs.io/?utm_source=0xPrateek&utm_medium=cpc&utm_campaign=0xPrateek_github_partner&adgroupid=202203034">
-<img width="300" alt="Oxylabs: Innovative Proxy Service to Gather Data at Scale" src="https://user-images.githubusercontent.com/8784712/155142247-17264699-1bc8-4b52-8236-8b9ef7b365e2.png" />
-</a> 
+
+<div align="left" style="display: flex; justify-content: left; gap: 30px; align-items: center;">
+
+  <a href="https://www.swiftproxy.net/?ref=0xprateek" style="margin: 0;">
+    <img src="https://raw.githubusercontent.com/0xPrateek/Stardox/refs/heads/feature/sponsor-swiftproxy/Logo/swifproxy.png" height="100" alt="Swiftproxy" />
+  </a>
+
+  <a href="https://oxylabs.io/?utm_source=0xPrateek&utm_medium=cpc&utm_campaign=0xPrateek_github_partner&adgroupid=202203034" style="margin: 0;">
+    <img src="https://user-images.githubusercontent.com/8784712/155142247-17264699-1bc8-4b52-8236-8b9ef7b365e2.png" height="100" alt="Oxylabs" />
+  </a>
+
+</div>
