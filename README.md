@@ -26,9 +26,9 @@
 <div style="display: flex; justify-content: center; gap: 30px; align-items: center;">
 
   <a href="https://www.swiftproxy.net/?ref=0xprateek" style="margin: 0;">
-    <img src="https://raw.githubusercontent.com/0xPrateek/Stardox/refs/heads/feature/sponsor-swiftproxy/Logo/swifproxy.png" height="100" alt="Swiftproxy" />
+    <img src="https://raw.githubusercontent.com/0xPrateek/Stardox/refs/heads/feature/sponsor-swiftproxy/Logo/swifproxy.png" height="150" alt="Swiftproxy" />
   </a><a href="https://oxylabs.io/?utm_source=0xPrateek&utm_medium=cpc&utm_campaign=0xPrateek_github_partner&adgroupid=202203034" style="margin: 0;">
-    <img src="https://user-images.githubusercontent.com/8784712/155142247-17264699-1bc8-4b52-8236-8b9ef7b365e2.png" height="100" alt="Oxylabs" />
+    <img src="https://user-images.githubusercontent.com/8784712/155142247-17264699-1bc8-4b52-8236-8b9ef7b365e2.png" height="150" alt="Oxylabs" />
   </a>
 
 </div>
