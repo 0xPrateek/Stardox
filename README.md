@@ -20,12 +20,21 @@
 
   </br>
   
- ## Sponsor
- 
-<a href="https://oxylabs.io/?utm_source=0xPrateek&utm_medium=cpc&utm_campaign=0xPrateek_github_partner&adgroupid=202203034">
-<img width="400" alt="Oxylabs: Innovative Proxy Service to Gather Data at Scale" src="https://user-images.githubusercontent.com/8784712/155142247-17264699-1bc8-4b52-8236-8b9ef7b365e2.png" />
-</a>
-</p>
+---
+## Sponsor
+
+<div style="display: flex; justify-content: center; gap: 30px; align-items: center;">
+
+  <a href="https://www.swiftproxy.net/?ref=0xprateek" style="margin: 0;">
+    <img src="https://raw.githubusercontent.com/0xPrateek/Stardox/refs/heads/feature/sponsor-swiftproxy/Logo/swifproxy.png" height="150" alt="Swiftproxy" />
+  </a><a href="https://oxylabs.io/?utm_source=0xPrateek&utm_medium=cpc&utm_campaign=0xPrateek_github_partner&adgroupid=202203034" style="margin: 0;">
+    <img src="https://user-images.githubusercontent.com/8784712/155142247-17264699-1bc8-4b52-8236-8b9ef7b365e2.png" height="150" alt="Oxylabs" />
+  </a>
+
+</div>
+
+
+---
 
 
 
@@ -87,14 +96,43 @@ P.S: Many new things will be added soon.
      -e, --email           Fetch only emails of stargazers.
 
 ### Contributing
-Any and all contributions, issues, features and tips are welcome.
+All contributions, issues, features and tips are welcome.
 
 ### License
 **Stardox** is licence under [GPL v3.0 license](https://www.gnu.org/licenses/gpl-3.0.en.html)
 
 ### Sponsors
-If my code has helped you, Please consider [sponsoring](https://paypal.me/0xprateek?country.x=IN&locale.x=en_GB) me. I'd like to thank these awesome companies for sponsoring me:
+If my code has helped you, please consider [sponsoring](https://paypal.me/0xprateek?country.x=IN&locale.x=en_GB) me.<br>
+I want to thank these awesome companies for sponsoring me.
 
-<a href="https://oxylabs.io/?utm_source=0xPrateek&utm_medium=cpc&utm_campaign=0xPrateek_github_partner&adgroupid=202203034">
-<img width="300" alt="Oxylabs: Innovative Proxy Service to Gather Data at Scale" src="https://user-images.githubusercontent.com/8784712/155142247-17264699-1bc8-4b52-8236-8b9ef7b365e2.png" />
-</a> 
+<table>
+  <tr>
+    <td style="vertical-align: top; padding-right: 20px; text-align: center;">
+      <a href="https://www.swiftproxy.net/?ref=0xprateek">
+        <img src="https://raw.githubusercontent.com/0xPrateek/Stardox/refs/heads/feature/sponsor-swiftproxy/Logo/swifproxy.png" height="100" alt="Swiftproxy logo" />
+      </a>
+    </td>
+    <td style="vertical-align: top; font-size: 14px;">
+      <strong>Swiftproxy</strong> offers over 90 million high-quality residential IPs worldwide, featuring low fraud scores and stable connections. <br /><br />
+      ✅ Get <strong>500MB free test traffic</strong> (no expiration). <br />
+      🎁 Use code <code>SWIFT10</code> for <strong>10% off</strong> on all proxy plans.
+    </td>
+  </tr>
+  <tr><td colspan="2"><br/></td></tr>
+  <tr>
+    <td style="vertical-align: top; padding-right: 20px; text-align: center;">
+      <a href="https://oxylabs.io/?utm_source=0xPrateek&utm_medium=cpc&utm_campaign=0xPrateek_github_partner&adgroupid=202203034">
+        <img src="https://user-images.githubusercontent.com/8784712/155142247-17264699-1bc8-4b52-8236-8b9ef7b365e2.png" height="100" alt="Oxylabs logo" />
+      </a>
+    </td>
+    <td style="vertical-align: top; font-size: 14px;">
+      <strong>Oxylabs</strong> is a premium proxy provider trusted by businesses for large-scale web data gathering. <br /><br />
+      🚀 Access residential, datacenter, and next-gen rotating proxies. <br />
+      🌍 Ideal for market research, SEO monitoring, ad verification, and more.
+    </td>
+  </tr>
+</table>
+
+
+
+
