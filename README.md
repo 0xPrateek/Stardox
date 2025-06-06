@@ -23,19 +23,17 @@
 ---
 ## Sponsor
 
-<div style="display: flex; justify-content: center; gap: 50px; align-items: center;">
-
-  <a href="https://iproyal.com/?r=903013" style="margin: 0;">
-    <img src="https://raw.githubusercontent.com/0xPrateek/Stardox/refs/heads/feature/added-sponsor-iproyal/Logo/iproyal.png" height="150" alt="IPRoyal" />
+<p align="center">
+  <a href="https://iproyal.com/?r=903013" style="display:inline-block; margin: 20px;">
+    <img src="https://raw.githubusercontent.com/0xPrateek/Stardox/refs/heads/feature/added-sponsor-iproyal/Logo/iproyal.png" height="120" width="120" alt="IPRoyal" />
   </a>
-  <a href="https://www.swiftproxy.net/?ref=0xprateek" style="margin: 0;">
-    <img src="https://raw.githubusercontent.com/0xPrateek/Stardox/refs/heads/feature/sponsor-swiftproxy/Logo/swifproxy.png" height="150" alt="Swiftproxy" />
+  <a href="https://www.swiftproxy.net/?ref=0xprateek" style="display:inline-block; margin: 20px;">
+    <img src="https://raw.githubusercontent.com/0xPrateek/Stardox/refs/heads/feature/sponsor-swiftproxy/Logo/swifproxy.png" height="120" width="120" alt="Swiftproxy" />
   </a>
-  <a href="https://oxylabs.io/?utm_source=0xPrateek&utm_medium=cpc&utm_campaign=0xPrateek_github_partner&adgroupid=202203034" style="margin: 0;">
-    <img src="https://raw.githubusercontent.com/0xPrateek/Stardox/refs/heads/feature/added-sponsor-iproyal/Logo/oxylabs.png" height="150" alt="Oxylabs" />
+  <a href="https://oxylabs.io/?utm_source=0xPrateek&utm_medium=cpc&utm_campaign=0xPrateek_github_partner&adgroupid=202203034" style="display:inline-block; margin: 20px;">
+    <img src="https://raw.githubusercontent.com/0xPrateek/Stardox/refs/heads/feature/added-sponsor-iproyal/Logo/oxylabs.png" height="120" width="120" alt="Oxylabs" />
   </a>
-
-</div>
+</p>
 
 
 ---
@@ -43,14 +41,14 @@
 
 
 ## About [Stardox](https://github.com/0xprateek/stardox)
-Stardox is an advanced github stargazers' information gathering tool. It scraps Github for information and displays it in list tree view. It can be used for collecting information of yours/someone's repository stargazers details.
+Stardox is an advanced GitHub stargazers' information gathering tool. It scrapes GitHub for information and displays it in a list tree view. It can be used to collect information about your or someone else's repository stargazers.
 
 ##### Highlighting Features :
 
 1. `Bypasses Github API fetch limit`
 5. `Fetches Stargazer's Email even if not displayed on public profile`
 
-##### What data it fetches :
+##### What data does it fetch:
 
 1. `Total repsitories`
 2. `Total stars`
@@ -113,7 +111,7 @@ I want to thank these awesome companies for sponsoring me.
   <tr>
     <td style="vertical-align: top; padding-right: 20px; text-align: center;">
       <a href="https://iproyal.com/?r=903013">
-        <img src="https://raw.githubusercontent.com/0xPrateek/Stardox/refs/heads/feature/added-sponsor-iproyal/Logo/iproyal.png" height="130" alt="IPRoyal logo" />
+        <img src="https://raw.githubusercontent.com/0xPrateek/Stardox/refs/heads/feature/added-sponsor-iproyal/Logo/iproyal.png" height="130" width="150" alt="IPRoyal logo" />
       </a>
     </td>
     <td style="vertical-align: top; font-size: 14px;">
@@ -126,7 +124,7 @@ I want to thank these awesome companies for sponsoring me.
   <tr>
     <td style="vertical-align: top; padding-right: 20px; text-align: center;">
       <a href="https://www.swiftproxy.net/?ref=0xprateek">
-        <img src="https://raw.githubusercontent.com/0xPrateek/Stardox/refs/heads/feature/sponsor-swiftproxy/Logo/swifproxy.png" height="130" alt="Swiftproxy logo" />
+        <img src="https://raw.githubusercontent.com/0xPrateek/Stardox/refs/heads/feature/sponsor-swiftproxy/Logo/swifproxy.png" height="130" width="150"  alt="Swiftproxy logo" />
       </a>
     </td>
     <td style="vertical-align: top; font-size: 14px;">
@@ -139,7 +137,7 @@ I want to thank these awesome companies for sponsoring me.
   <tr>
     <td style="vertical-align: top; padding-right: 20px; text-align: center;">
       <a href="https://oxylabs.io/?utm_source=0xPrateek&utm_medium=cpc&utm_campaign=0xPrateek_github_partner&adgroupid=202203034">
-        <img src="https://raw.githubusercontent.com/0xPrateek/Stardox/refs/heads/feature/added-sponsor-iproyal/Logo/oxylabs.png" height="130" alt="Oxylabs logo" />
+        <img src="https://raw.githubusercontent.com/0xPrateek/Stardox/refs/heads/feature/added-sponsor-iproyal/Logo/oxylabs.png" height="130" width="150"  alt="Oxylabs logo" />
       </a>
     </td>
     <td style="vertical-align: top; font-size: 14px;">
