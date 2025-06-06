@@ -111,7 +111,7 @@ I want to thank these awesome companies for sponsoring me.
   <tr>
     <td style="vertical-align: top; padding-right: 20px; text-align: center;">
       <a href="https://iproyal.com/?r=903013">
-        <img src="https://raw.githubusercontent.com/0xPrateek/Stardox/refs/heads/feature/added-sponsor-iproyal/Logo/iproyal.png" height="130" width="150" alt="IPRoyal logo" />
+        <img src="https://raw.githubusercontent.com/0xPrateek/Stardox/refs/heads/feature/added-sponsor-iproyal/Logo/iproyal.png" height="130" width="130" alt="IPRoyal logo" />
       </a>
     </td>
     <td style="vertical-align: top; font-size: 14px;">
@@ -124,7 +124,7 @@ I want to thank these awesome companies for sponsoring me.
   <tr>
     <td style="vertical-align: top; padding-right: 20px; text-align: center;">
       <a href="https://www.swiftproxy.net/?ref=0xprateek">
-        <img src="https://raw.githubusercontent.com/0xPrateek/Stardox/refs/heads/feature/sponsor-swiftproxy/Logo/swifproxy.png" height="130" width="150"  alt="Swiftproxy logo" />
+        <img src="https://raw.githubusercontent.com/0xPrateek/Stardox/refs/heads/feature/sponsor-swiftproxy/Logo/swifproxy.png" height="130" width="130"  alt="Swiftproxy logo" />
       </a>
     </td>
     <td style="vertical-align: top; font-size: 14px;">
@@ -137,7 +137,7 @@ I want to thank these awesome companies for sponsoring me.
   <tr>
     <td style="vertical-align: top; padding-right: 20px; text-align: center;">
       <a href="https://oxylabs.io/?utm_source=0xPrateek&utm_medium=cpc&utm_campaign=0xPrateek_github_partner&adgroupid=202203034">
-        <img src="https://raw.githubusercontent.com/0xPrateek/Stardox/refs/heads/feature/added-sponsor-iproyal/Logo/oxylabs.png" height="130" width="150"  alt="Oxylabs logo" />
+        <img src="https://raw.githubusercontent.com/0xPrateek/Stardox/refs/heads/feature/added-sponsor-iproyal/Logo/oxylabs.png" height="130" width="130"  alt="Oxylabs logo" />
       </a>
     </td>
     <td style="vertical-align: top; font-size: 14px;">
