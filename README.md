@@ -25,9 +25,13 @@
 
 <div style="display: flex; justify-content: center; gap: 30px; align-items: center;">
 
+  <a href="https://iproyal.com/?r=903013" style="margin: 0;">
+    <img src="https://raw.githubusercontent.com/0xPrateek/Stardox/master/Logo/iproyal.png" height="150" alt="IPRoyal" />
+  </a>
   <a href="https://www.swiftproxy.net/?ref=0xprateek" style="margin: 0;">
     <img src="https://raw.githubusercontent.com/0xPrateek/Stardox/refs/heads/feature/sponsor-swiftproxy/Logo/swifproxy.png" height="150" alt="Swiftproxy" />
-  </a><a href="https://oxylabs.io/?utm_source=0xPrateek&utm_medium=cpc&utm_campaign=0xPrateek_github_partner&adgroupid=202203034" style="margin: 0;">
+  </a>
+  <a href="https://oxylabs.io/?utm_source=0xPrateek&utm_medium=cpc&utm_campaign=0xPrateek_github_partner&adgroupid=202203034" style="margin: 0;">
     <img src="https://user-images.githubusercontent.com/8784712/155142247-17264699-1bc8-4b52-8236-8b9ef7b365e2.png" height="150" alt="Oxylabs" />
   </a>
 
@@ -106,6 +110,19 @@ If my code has helped you, please consider [sponsoring](https://paypal.me/0xprat
 I want to thank these awesome companies for sponsoring me.
 
 <table>
+  <tr>
+    <td style="vertical-align: top; padding-right: 20px; text-align: center;">
+      <a href="https://iproyal.com/?r=903013">
+        <img src="https://raw.githubusercontent.com/0xPrateek/Stardox/master/Logo/iproyal.png" height="100" alt="IPRoyal logo" />
+      </a>
+    </td>
+    <td style="vertical-align: top; font-size: 14px;">
+      <strong>IPRoyal</strong> offers premium quality proxies with unbeatable prices, featuring a network of 34M+ ethical proxies ensuring 99.9% uptime. <br /><br />
+      🌍 Access residential, ISP, datacenter, and mobile proxies worldwide. <br />
+      ⚡ Perfect for web scraping, social media management, and market research.
+    </td>
+  </tr>
+  <tr><td colspan="2"><br/></td></tr>
   <tr>
     <td style="vertical-align: top; padding-right: 20px; text-align: center;">
       <a href="https://www.swiftproxy.net/?ref=0xprateek">
