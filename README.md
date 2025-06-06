@@ -32,7 +32,7 @@
     <img src="https://raw.githubusercontent.com/0xPrateek/Stardox/refs/heads/feature/sponsor-swiftproxy/Logo/swifproxy.png" height="150" alt="Swiftproxy" />
   </a>
   <a href="https://oxylabs.io/?utm_source=0xPrateek&utm_medium=cpc&utm_campaign=0xPrateek_github_partner&adgroupid=202203034" style="margin: 0;">
-    <img src="https://user-images.githubusercontent.com/8784712/155142247-17264699-1bc8-4b52-8236-8b9ef7b365e2.png" height="150" alt="Oxylabs" />
+    <img src="https://raw.githubusercontent.com/0xPrateek/Stardox/refs/heads/feature/added-sponsor-iproyal/Logo/oxylabs.png" height="150" alt="Oxylabs" />
   </a>
 
 </div>
@@ -139,7 +139,7 @@ I want to thank these awesome companies for sponsoring me.
   <tr>
     <td style="vertical-align: top; padding-right: 20px; text-align: center;">
       <a href="https://oxylabs.io/?utm_source=0xPrateek&utm_medium=cpc&utm_campaign=0xPrateek_github_partner&adgroupid=202203034">
-        <img src="https://user-images.githubusercontent.com/8784712/155142247-17264699-1bc8-4b52-8236-8b9ef7b365e2.png" height="100" alt="Oxylabs logo" />
+        <img src="https://raw.githubusercontent.com/0xPrateek/Stardox/refs/heads/feature/added-sponsor-iproyal/Logo/oxylabs.png" height="100" alt="Oxylabs logo" />
       </a>
     </td>
     <td style="vertical-align: top; font-size: 14px;">
