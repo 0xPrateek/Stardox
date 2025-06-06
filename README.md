@@ -26,7 +26,7 @@
 <div style="display: flex; justify-content: center; gap: 30px; align-items: center;">
 
   <a href="https://iproyal.com/?r=903013" style="margin: 0;">
-    <img src="https://raw.githubusercontent.com/0xPrateek/Stardox/master/Logo/iproyal.png" height="150" alt="IPRoyal" />
+    <img src="https://raw.githubusercontent.com/0xPrateek/Stardox/refs/heads/feature/added-sponsor-iproyal/Logo/iproyal.png" height="150" alt="IPRoyal" />
   </a>
   <a href="https://www.swiftproxy.net/?ref=0xprateek" style="margin: 0;">
     <img src="https://raw.githubusercontent.com/0xPrateek/Stardox/refs/heads/feature/sponsor-swiftproxy/Logo/swifproxy.png" height="150" alt="Swiftproxy" />
@@ -113,7 +113,7 @@ I want to thank these awesome companies for sponsoring me.
   <tr>
     <td style="vertical-align: top; padding-right: 20px; text-align: center;">
       <a href="https://iproyal.com/?r=903013">
-        <img src="https://raw.githubusercontent.com/0xPrateek/Stardox/master/Logo/iproyal.png" height="100" alt="IPRoyal logo" />
+        <img src="https://raw.githubusercontent.com/0xPrateek/Stardox/refs/heads/feature/added-sponsor-iproyal/Logo/iproyal.png" height="100" alt="IPRoyal logo" />
       </a>
     </td>
     <td style="vertical-align: top; font-size: 14px;">
