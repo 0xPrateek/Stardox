@@ -23,17 +23,30 @@
 ---
 ## Sponsor
 
-<p align="center">
-  <a href="https://iproyal.com/?r=903013" style="display:inline-block; margin: 20px;">
-    <img src="https://raw.githubusercontent.com/0xPrateek/Stardox/refs/heads/feature/added-sponsor-iproyal/Logo/iproyal.png" height="130" width="130" alt="IPRoyal" />
-  </a>
-  <a href="https://www.swiftproxy.net/?ref=0xprateek" style="display:inline-block; margin: 20px;">
-    <img src="https://raw.githubusercontent.com/0xPrateek/Stardox/refs/heads/feature/sponsor-swiftproxy/Logo/swifproxy.png" height="130" width="130" alt="Swiftproxy" />
-  </a>
-  <a href="https://oxylabs.io/?utm_source=0xPrateek&utm_medium=cpc&utm_campaign=0xPrateek_github_partner&adgroupid=202203034" style="display:inline-block; margin: 20px;">
-    <img src="https://raw.githubusercontent.com/0xPrateek/Stardox/refs/heads/feature/added-sponsor-iproyal/Logo/oxylabs.png" height="130" width="130" alt="Oxylabs" />
-  </a>
-</p>
+<table align="center">
+  <tr>
+    <td align="center">
+      <a href="https://www.thordata.com/?ls=SD&lk=dsd">
+        <img src="https://raw.githubusercontent.com/0xPrateek/Stardox/refs/heads/feature/thordata-sponsor/Logo/thordata.jpg" height="130" width="130" alt="Thordata" />
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://iproyal.com/?r=903013">
+        <img src="https://raw.githubusercontent.com/0xPrateek/Stardox/refs/heads/feature/added-sponsor-iproyal/Logo/iproyal.png" height="130" width="130" alt="IPRoyal" />
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://www.swiftproxy.net/?ref=0xprateek">
+        <img src="https://raw.githubusercontent.com/0xPrateek/Stardox/refs/heads/feature/sponsor-swiftproxy/Logo/swifproxy.png" height="130" width="130" alt="Swiftproxy" />
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://oxylabs.io/?utm_source=0xPrateek&utm_medium=cpc&utm_campaign=0xPrateek_github_partner&adgroupid=202203034">
+        <img src="https://raw.githubusercontent.com/0xPrateek/Stardox/refs/heads/feature/added-sponsor-iproyal/Logo/oxylabs.png" height="130" width="130" alt="Oxylabs" />
+      </a>
+    </td>
+  </tr>
+</table>
 
 
 ---
@@ -108,6 +121,20 @@ If my code has helped you, please consider [sponsoring](https://paypal.me/0xprat
 I want to thank these awesome companies for sponsoring me.
 
 <table>
+  <tr>
+    <td style="vertical-align: top; padding-right: 20px; text-align: center;">
+      <a href="https://www.thordata.com/?ls=SD&lk=dsd">
+        <img src="https://raw.githubusercontent.com/0xPrateek/Stardox/refs/heads/feature/thordata-sponsor/Logo/thordata.jpg" height="150" width="160" alt="Thordata logo" />
+      </a>
+    </td>
+    <td style="vertical-align: top; font-size: 14px;">
+      <strong>Thordata</strong> Premium Residential Proxy with Free Trial — Rotating, Mobile, Static, and SERP API. <br /><br />
+      ⚡ Unlimited concurrent connections &amp; bandwidth. <br />
+      🌍 Ideal for web scraping, SEO, multi-account management, LLM, and more. <br />
+      🎁 Use code <code>0xprateek20</code> for <strong>20% OFF</strong>.
+    </td>
+  </tr>
+  <tr><td colspan="2"><br/></td></tr>
   <tr>
     <td style="vertical-align: top; padding-right: 20px; text-align: center;">
       <a href="https://iproyal.com/?r=903013">
