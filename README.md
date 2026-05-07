@@ -7,9 +7,6 @@
   <a href="https://docs.python.org/3/download.html">
     <img src="https://img.shields.io/badge/Python-3.x-green.svg" alt="Python 3.x" />
   </a>
-  <a href="https://github.com/0xprateek/stardox/releases">
-    <img src="https://img.shields.io/github/v/release/0xprateek/stardox?label=Version&color=blue" alt="Version" />
-  </a>
   <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">
     <img src="https://img.shields.io/badge/License-GPLv3-orange.svg" alt="License: GPLv3" />
   </a>
@@ -53,63 +50,6 @@ Huge thanks to the companies supporting Stardox:
     </td>
   </tr>
 </table>
-
-<table>
-  <tr>
-    <td align="center" valign="top">
-      <a href="https://www.thordata.com/?ls=SD&lk=dsd">
-        <img src="https://raw.githubusercontent.com/0xPrateek/Stardox/refs/heads/feature/thordata-sponsor/Logo/thordata.jpg" height="150" alt="Thordata logo" />
-      </a>
-    </td>
-    <td valign="top">
-      <strong>Thordata</strong> Premium Residential Proxy with Free Trial &mdash; Rotating, Mobile, Static, and SERP API. <br /><br />
-      &#9889; Unlimited concurrent connections &amp; bandwidth. <br />
-      &#127757; Ideal for web scraping, SEO, multi-account management, LLM, and more. <br />
-      &#127873; Use code <code>0xprateek20</code> for <strong>20% OFF</strong>.
-    </td>
-  </tr>
-  <tr><td colspan="2"><br /></td></tr>
-  <tr>
-    <td align="center" valign="top">
-      <a href="https://iproyal.com/?r=903013">
-        <img src="https://raw.githubusercontent.com/0xPrateek/Stardox/refs/heads/feature/added-sponsor-iproyal/Logo/iproyal.png" height="150" alt="IPRoyal logo" />
-      </a>
-    </td>
-    <td valign="top">
-      <strong>IPRoyal</strong> offers premium quality proxies with unbeatable prices, featuring a network of 34M+ ethical proxies ensuring 99.9% uptime. <br /><br />
-      &#127757; Access residential, ISP, datacenter, and mobile proxies worldwide. <br />
-      &#9889; Perfect for web scraping, social media management, and market research.
-    </td>
-  </tr>
-  <tr><td colspan="2"><br /></td></tr>
-  <tr>
-    <td align="center" valign="top">
-      <a href="https://www.swiftproxy.net/?ref=0xprateek">
-        <img src="https://raw.githubusercontent.com/0xPrateek/Stardox/refs/heads/feature/sponsor-swiftproxy/Logo/swifproxy.png" height="150" alt="Swiftproxy logo" />
-      </a>
-    </td>
-    <td valign="top">
-      <strong>Swiftproxy</strong> offers over 90 million high-quality residential IPs worldwide, featuring low fraud scores and stable connections. <br /><br />
-      &#9989; Get <strong>500MB free test traffic</strong> (no expiration). <br />
-      &#127873; Use code <code>SWIFT10</code> for <strong>10% off</strong> on all proxy plans.
-    </td>
-  </tr>
-  <tr><td colspan="2"><br /></td></tr>
-  <tr>
-    <td align="center" valign="top">
-      <a href="https://oxylabs.io/?utm_source=0xPrateek&utm_medium=cpc&utm_campaign=0xPrateek_github_partner&adgroupid=202203034">
-        <img src="https://raw.githubusercontent.com/0xPrateek/Stardox/refs/heads/feature/added-sponsor-iproyal/Logo/oxylabs.png" height="150" alt="Oxylabs logo" />
-      </a>
-    </td>
-    <td valign="top">
-      <strong>Oxylabs</strong> is a premium proxy provider trusted by businesses for large-scale web data gathering. <br /><br />
-      &#128640; Access residential, datacenter, and next-gen rotating proxies. <br />
-      &#127757; Ideal for market research, SEO monitoring, ad verification, and more.
-    </td>
-  </tr>
-</table>
-
-If Stardox has helped you, please consider [sponsoring](https://paypal.me/0xprateek?country.x=IN&locale.x=en_GB) the project.
 
 ---
 
@@ -189,3 +129,64 @@ Contributions, issues, and feature requests are welcome. Open an [issue](https:/
 ## License
 
 Stardox is licensed under the [GPL v3.0 license](https://www.gnu.org/licenses/gpl-3.0.en.html).
+
+## Acknowledgements
+
+A special thanks to the companies whose support keeps Stardox going:
+
+<table>
+  <tr>
+    <td align="center" valign="top">
+      <a href="https://www.thordata.com/?ls=SD&lk=dsd">
+        <img src="https://raw.githubusercontent.com/0xPrateek/Stardox/refs/heads/feature/thordata-sponsor/Logo/thordata.jpg" height="150" alt="Thordata logo" />
+      </a>
+    </td>
+    <td valign="top">
+      <strong>Thordata</strong> Premium Residential Proxy with Free Trial &mdash; Rotating, Mobile, Static, and SERP API. <br /><br />
+      &#9889; Unlimited concurrent connections &amp; bandwidth. <br />
+      &#127757; Ideal for web scraping, SEO, multi-account management, LLM, and more. <br />
+      &#127873; Use code <code>0xprateek20</code> for <strong>20% OFF</strong>.
+    </td>
+  </tr>
+  <tr><td colspan="2"><br /></td></tr>
+  <tr>
+    <td align="center" valign="top">
+      <a href="https://iproyal.com/?r=903013">
+        <img src="https://raw.githubusercontent.com/0xPrateek/Stardox/refs/heads/feature/added-sponsor-iproyal/Logo/iproyal.png" height="150" alt="IPRoyal logo" />
+      </a>
+    </td>
+    <td valign="top">
+      <strong>IPRoyal</strong> offers premium quality proxies with unbeatable prices, featuring a network of 34M+ ethical proxies ensuring 99.9% uptime. <br /><br />
+      &#127757; Access residential, ISP, datacenter, and mobile proxies worldwide. <br />
+      &#9889; Perfect for web scraping, social media management, and market research.
+    </td>
+  </tr>
+  <tr><td colspan="2"><br /></td></tr>
+  <tr>
+    <td align="center" valign="top">
+      <a href="https://www.swiftproxy.net/?ref=0xprateek">
+        <img src="https://raw.githubusercontent.com/0xPrateek/Stardox/refs/heads/feature/sponsor-swiftproxy/Logo/swifproxy.png" height="150" alt="Swiftproxy logo" />
+      </a>
+    </td>
+    <td valign="top">
+      <strong>Swiftproxy</strong> offers over 90 million high-quality residential IPs worldwide, featuring low fraud scores and stable connections. <br /><br />
+      &#9989; Get <strong>500MB free test traffic</strong> (no expiration). <br />
+      &#127873; Use code <code>SWIFT10</code> for <strong>10% off</strong> on all proxy plans.
+    </td>
+  </tr>
+  <tr><td colspan="2"><br /></td></tr>
+  <tr>
+    <td align="center" valign="top">
+      <a href="https://oxylabs.io/?utm_source=0xPrateek&utm_medium=cpc&utm_campaign=0xPrateek_github_partner&adgroupid=202203034">
+        <img src="https://raw.githubusercontent.com/0xPrateek/Stardox/refs/heads/feature/added-sponsor-iproyal/Logo/oxylabs.png" height="150" alt="Oxylabs logo" />
+      </a>
+    </td>
+    <td valign="top">
+      <strong>Oxylabs</strong> is a premium proxy provider trusted by businesses for large-scale web data gathering. <br /><br />
+      &#128640; Access residential, datacenter, and next-gen rotating proxies. <br />
+      &#127757; Ideal for market research, SEO monitoring, ad verification, and more.
+    </td>
+  </tr>
+</table>
+
+If Stardox has helped you, please consider [sponsoring](https://paypal.me/0xprateek?country.x=IN&locale.x=en_GB) the project.
